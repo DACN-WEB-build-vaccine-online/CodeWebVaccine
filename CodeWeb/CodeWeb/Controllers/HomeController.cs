@@ -13,7 +13,7 @@ namespace CodeWeb.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Login()
         {
             
 
