@@ -1,4 +1,37 @@
 ﻿$(document).ready(function () {
+    const host = "https://provinces.open-api.vn/api/";
+    var callAPI = (api) => {
+        return axios.get(api)
+            .then((response) => {
+                renderData(response.data, "city");
+            });
+    }
+    callAPI('https://provinces.open-api.vn/api/?depth=1');
+    var callApiDistrict = (api) => {
+        return axios.get(api)
+            .then((response) => {
+                renderData(response.data.districts, "district");
+            });
+    }
+    var callApiWard = (api) => {
+        return axios.get(api)
+            .then((response) => {
+                renderData(response.data.wards, "ward");
+            });
+    }
+    var renderData = (array, select) => {
+        let row = `<option disable value="">Chọn</option>`;
+        array.forEach(element => {
+            row += `<option data-id="${element.code}" value="${element.name}">${element.name}</option>`
+        });
+        document.querySelector("#" + select).innerHTML = row
+    }
+    $("#city").change(() => {
+        callApiDistrict(host + "p/" + $("#city").find(':selected').data('id') + "?depth=2");
+    });
+    $("#district").change(() => {
+        callApiWard(host + "d/" + $("#district").find(':selected').data('id') + "?depth=2");
+    });
     // Lấy ngày hôm nay
     var today = new Date();
 
@@ -17,7 +50,30 @@
         }
     });
 
-    // Hàm validate trường
+    // Xử lý khi form được submit
+    $('#registrationForm').on('submit', function (event) {
+        const fieldsToValidate = ['#fullName', '#dateOfBirth', '#province', '#district', '#ward', '#address'];
+
+        //for (const fieldId of fieldsToValidate) {
+        //    validateField($(fieldId));
+        //}
+
+        if (!this.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        this.classList.add('was-validated');
+    });
+
+    $('#fullName').on('blur', function () {
+        validateField($(this));
+    });
+
+    // Xử lý validate khi người dùng chuyển ra khỏi trường số nhà/tên đường
+    $('#address').on('blur', function () {
+        validateField($(this));
+    });
     function validateField(field) {
         const value = field.val().trim();
         const invalidFeedback = field.next('.invalid-feedback');
@@ -31,58 +87,5 @@
         }
     }
 
-    // Xử lý khi form được submit
-    $('#registrationForm').on('submit', function (event) {
-        const fieldsToValidate = ['#fullName', '#dateOfBirth', '#province', '#district', '#ward', '#address'];
-
-        for (const fieldId of fieldsToValidate) {
-            validateField($(fieldId));
-        }
-
-        if (!this.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
-        this.classList.add('was-validated');
-    });
-
-    // Xử lý validate khi người dùng chuyển ra khỏi trường
-    $('#fullName, #dateOfBirth, #province, #district, #ward, #address').on('blur', function () {
-        validateField($(this));
-    });
-
-    // Xử lý validate khi người dùng thay đổi giá trị trường
-    $('#fullName, #dateOfBirth, #province, #district, #ward, #address').on('change', function () {
-        validateField($(this));
-    });
-
-    // Khóa trường quận huyện và phường xã ban đầu
-    $('#district, #ward').prop('disabled', true);
-
-    // Xử lý khi chọn thành phố
-    $('#province').on('change', function () {
-        const selectedCity = $(this).val();
-        if (selectedCity) {
-            // Cho phép chọn quận huyện khi đã chọn thành phố
-            $('#district').prop('disabled', false);
-        } else {
-            // Khóa trường quận huyện khi không chọn thành phố
-            $('#district').prop('disabled', true);
-            // Khóa trường phường xã khi không chọn thành phố
-            $('#ward').prop('disabled', true);
-        }
-    });
-
-    // Xử lý khi chọn quận huyện
-    $('#district').on('change', function () {
-        const selectedDistrict = $(this).val();
-        if (selectedDistrict) {
-            // Cho phép chọn phường xã khi đã chọn quận huyện
-            $('#ward').prop('disabled', false);
-        } else {
-            // Khóa trường phường xã khi không chọn quận huyện
-            $('#ward').prop('disabled', true);
-        }
-    });
+   
 });
