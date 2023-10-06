@@ -156,6 +156,7 @@
     <Content Include="Content\assets\img\testimonials\testimonials-4.jpg" />
     <Content Include="Content\assets\img\testimonials\testimonials-5.jpg" />
     <Content Include="Content\assets\js\main.js" />
+    <Content Include="Content\assets\js\validateform.js" />
     <Content Include="Content\assets\scss\Readme.txt" />
     <Content Include="Content\assets\vendor\animate.css\animate.compat.css" />
     <Content Include="Content\assets\vendor\animate.css\animate.css" />

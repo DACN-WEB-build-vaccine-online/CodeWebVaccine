@@ -233,6 +233,16 @@ h6 {
   }
 }
 
+.required {
+    color: red;
+    margin-left: 5px; /* Khoảng cách giữa dấu '*' và trường */
+}
+
+/* Màu xám cho ngày không thể chọn */
+.date-disabled {
+    color: gray;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
