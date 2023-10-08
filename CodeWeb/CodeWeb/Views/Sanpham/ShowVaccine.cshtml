@@ -1,0 +1,162 @@
+﻿@model IEnumerable<CodeWeb.Models.Vaccine>
+
+@{
+    ViewBag.Title = "Vắc xin";
+    Layout = "~/Views/Shared/MainView.cshtml";
+}
+
+@{
+    string iconClass = "";
+    if (ViewBag.IconClass == "fa-sort-desc")
+    {
+        iconClass = "fa-sort-asc";
+    }
+    else
+    {
+        iconClass = "fa-sort-desc";
+
+    }
+}
+<style>
+    a {
+        color: #000000;
+    }
+
+        a:hover {
+            color: #6c757d
+        }
+</style>
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <div class="text" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Loại vắc-xin
+                                    </div>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        @Html.Action("Loai", "Home")
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <div class="text" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Nhóm vắc-xin
+                                    </div>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        @Html.Action("NhomVacxin", "Home")
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__sidebar__search">
+                                @*@Html.Partial("_Search")*@
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__right">
+                                <a href="/Sanpham/ShowVaccine?SortColumn=GiaBan&IconClass=@iconClass&page=1">Sắp xếp theo</a>
+                                @if (ViewBag.SortColumn == "GiaBan")
+                                {
+                                    <i class="fa @ViewBag.IconClass"></i>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var p in Model)
+                    {
+                        <div class="col-lg-4 ">
+                            <div class="product__item">
+                                <div class="">
+                                    <a href="@Url.Action("Details", "Sanpham", new {@id = p.MaVaccin}, null)">
+                                        <img src="~/images/@p.HinhAnh" id="img_giua" alt="...">
+                                    </a>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>@p.TenVaccin</h6>
+                                    <a href="@Url.Action("ThemGioHang", "Cart", new { idAo = p.MaVaccin, strURL = Request.Url.ToString() })" class="add-cart">+ Thêm vào giỏ hàng</a>
+                                    <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBan)</h5>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <tr>
+            <td colspan="9">
+                @{
+                    int PrevPage = ViewBag.Page - 1;
+                    if (PrevPage <= 0)
+                    {
+                        PrevPage = 1;
+                    }
+                    int NextPage = ViewBag.Page + 1;
+                    if (NextPage > ViewBag.NoOfPages)
+                    {
+                        NextPage = ViewBag.NoOfPages;
+                    }
+                }
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="/Sanpham/ShowVaccine?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@PrevPage)">
+                            Prev
+                        </a>
+                    </li>
+                    @for (int i = 0; i < ViewBag.NoOfPage; i++)
+                    {
+                        if (i + 1 == ViewBag.Page)
+                        {
+                            <li class="page-item active">
+                                <a class="page-link" href="/Sanpham/ShowVaccine?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@(i+1)">
+                                    @(i+1)
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="/Sanpham/ShowVaccine?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@(i+1)">
+                                    @(i+1)
+                                </a>
+                            </li>
+                        }
+                    }
+                    <li class="page-item active">
+                        <a class="page-link" href="/Sanpham/ShowVaccine?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@NextPage">
+                            Next
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </div>
+   
+</section>
+<!-- Shop Section End -->

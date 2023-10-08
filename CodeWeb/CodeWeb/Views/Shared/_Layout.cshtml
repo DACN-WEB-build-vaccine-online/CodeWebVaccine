@@ -48,7 +48,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="@Url.Action("Index","Home")">Trang chủ</a></li>
                     <li class="dropdown">
-                        <a href="#"><span>Đăng ký tiêm</span> <i class="bi bi-chevron-down"></i></a>
+                        <a href="@Url.Action("DangKyTiem","Home")"><span>Đăng ký tiêm</span></a>
                         <ul>
                             <li><a href="#">Đăng ký tiêm vắc xin cho cá nhân</a></li>
                             @*<li class="dropdown">
@@ -64,6 +64,7 @@
                             <li><a href="#">Đăng ký tiêm vắc xin cho tổ chức</a></li>
                         </ul>
                     </li>
+                    <li><a class="nav-link scrollto" href="@Url.Action("ShowVaccine","Sanpham")">Danh sách Vaccine</a></li>
                     <li class="dropdown">
                         <a href="#"><span>Tra cứu</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
