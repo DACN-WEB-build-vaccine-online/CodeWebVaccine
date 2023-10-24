@@ -5,8 +5,10 @@
 }
 
 <div class="container mt-5">
-    <h1 class="mb-4">Đăng ký thông tin tiêm chủng</h1>
-    <form id="registrationForm" novalidate>
+    <p>Đăng ký thông tin tiêm chủng để tiết kiệm thời gian khi đến làm thủ tục tại quầy Lễ tân cho Quý Khách hàng,</br> việc đăng ký thông tin tiêm chủng chưa hỗ trợ đặt lịch hẹn chính xác theo giờ.</p>
+    
+    <form id="registrationForm" novalidate class="custom-form">
+        <h3>THÔNG TIN NGƯỜI TIÊM</h3>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="fullName" class="form-label">Họ và tên<span class="required">*</span>:</label>
@@ -17,11 +19,12 @@
             </div>
             <div class="col-md-6">
                 <label for="dateOfBirth" class="form-label">Ngày sinh<span class="required">*</span>:</label>
-                <input type="text" class="form-control dateOfBirth" name="dateOfBirth" placeholder="Ngày-Tháng-năm" required readonly>
+                <input type="date" class="form-control" name="dateOfBirth" id="ngaySinh" max="@DateTime.Now.ToString("yyyy-MM-dd")">
                 <div class="invalid-feedback">
                     Vui lòng chọn ngày sinh.
                 </div>
             </div>
+
         </div>
 
         <div class="row mb-3">
@@ -30,7 +33,7 @@
                 <select class="form-select" id="city" name="province" required>
                     <option value="" disabled selected>Chọn Tỉnh/thành phố...</option>
                 </select>
-                
+
             </div>
             <div class="col-md-4">
                 <label for="district" class="form-label">Quận/Huyện<span class="required">*</span>:</label>
@@ -46,7 +49,7 @@
                 <select class="form-select" id="ward" name="ward">
                     <option value="" selected>Chọn phường/xã</option>
                 </select>
-                
+
             </div>
         </div>
 
@@ -58,6 +61,65 @@
                     Vui lòng nhập địa chỉ
                 </div>
             </div>
+        </div>
+
+        <h3>THÔNG TIN LIÊN HỆ</h3>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="contactName" class="form-label">Họ tên người liên hệ<span class="required">*</span>:</label>
+                <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Nhập họ tên người liên hệ" required>
+                <div class="invalid-feedback">
+                    Vui lòng nhập họ tên người liên hệ.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="relationship" class="form-label">Mối quan hệ với người tiêm<span class="required">*</span>:</label>
+                        <select class="form-select" id="relationship" name="relationship">
+                            <option value="Chọn">Chọn</option>
+                            <option value="Cha">Cha</option>
+                            <option value="Mẹ">Mẹ</option>
+                            <option value="Anh/Chị/Em">Anh/Chị/Em</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="contactPhone" class="form-label">Số điện thoại người liên hệ<span class="required">*</span>:</label>
+                        <input type="text" class="form-control" id="contactPhone" name="contactPhone" placeholder="Nhập số điện thoại người liên hệ" required>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập số điện thoại người liên hệ.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin dịch vụ -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="vaccineType" class="form-label">Loại vắc xin muốn đăng ký:</label>
+                <select class="form-select" id="vaccineType" name="vaccineType">
+                    <option value="Vắc xin gói">Vắc xin gói</option>
+                    <option value="Vắc xin lẻ">Vắc xin lẻ</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="desiredDate" class="form-label">Ngày mong muốn tiêm:</label>
+                <input type="date" class="form-control" id="desiredDate" name="desiredDate">
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <label for="vaccineCenter" class="form-label">Trung tâm VNVC mong muốn tiêm:</label>
+            <select class="form-select" id="vaccineCenter" name="vaccineCenter">
+                <option value="Chọn">Chọn</option>
+                <option value="Trung tâm 1">Trung tâm 1</option>
+                <option value="Trung tâm 2">Trung tâm 2</option>
+                <option value="Trung tâm 3">Trung tâm 3</option>
+                <option value="Trung tâm 4">Trung tâm 4</option>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Hoàn tất đăng ký</button>

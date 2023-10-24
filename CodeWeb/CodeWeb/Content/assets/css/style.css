@@ -741,6 +741,29 @@ section {
   color: #848484;
 }
 
+/* Tệp CSS tùy chỉnh */
+.custom-form {
+    border: 1px solid #ccc; /* Viền cho form */
+    padding: 20px; /* Khoảng cách nội dung và viền */
+    border-radius: 10px; /* Góc bo tròn cho form */
+    background-color: #f7f7f7; /* Màu nền cho form */
+}
+
+    .custom-form label {
+        font-weight: bold; /* In đậm cho nhãn label */
+    }
+
+    .custom-form input[type="text"],
+    .custom-form select {
+        width: 100%; /* Độ rộng 100% cho input và select */
+        padding: 10px; /* Khoảng cách bên trong input và select */
+        margin-bottom: 10px; /* Khoảng cách giữa các trường */
+    }
+
+    .custom-form button {
+        margin-top: 20px; /* Khoảng cách giữa nút và trường cuối cùng */
+    }
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/

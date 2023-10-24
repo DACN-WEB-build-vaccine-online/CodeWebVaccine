@@ -81,9 +81,9 @@ namespace CodeWeb.Controllers
 
         public ActionResult NhomVaccine(int Manhom)
         {
-            var nhonvc = db.NhomVaccines.Where(s => s.MaNhom == Manhom).ToList();
+            var nhomvc = db.NhomVaccines.Where(s => s.MaNhom == Manhom).ToList();
 
-            if (nhonvc.Count == 0)
+            if (nhomvc.Count == 0)
             {
                 ViewBag.TB = "Khong tim thay";
             }
@@ -94,7 +94,7 @@ namespace CodeWeb.Controllers
             }
 
 
-            return View(nhonvc);
+            return View(nhomvc);
         }
 
     }
