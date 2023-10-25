@@ -1,8 +1,25 @@
-﻿
+﻿@model CodeWeb.Models.Vaccine
 @{
     ViewBag.Title = "Chi tiết";
     Layout = "~/Views/Shared/MainView.cshtml";
 }
+<a href="@Url.Action("Index", "Home")">Trang chủ</a>
 
-<h2>Details</h2>
+@if (!string.IsNullOrEmpty(ViewBag.Title) && !string.Equals(ViewBag.Title, "Trang chủ", StringComparison.OrdinalIgnoreCase))
+{
+    <text> > </text>
+    <a href="@Url.Action("ShowVaccine", "Sanpham")">Danh sách vắc xin</a>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ProductName))
+{
+    <text> > </text>
+    <span>@ViewBag.ProductName</span>
+}
+
+
+
+
+
+
 

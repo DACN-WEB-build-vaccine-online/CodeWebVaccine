@@ -3,10 +3,16 @@
     ViewBag.Title = "Đăng ký tiêm";
     Layout = "~/Views/Shared/MainView.cshtml";
 }
+@Html.ActionLink("Trang chủ", "Index", "Home")
 
+@if (!string.IsNullOrEmpty(ViewBag.Title) && !string.Equals(ViewBag.Title, "Trang chủ", StringComparison.OrdinalIgnoreCase))
+{
+    @: > @ViewBag.Title
+}
 <div class="container mt-5">
+
     <p>Đăng ký thông tin tiêm chủng để tiết kiệm thời gian khi đến làm thủ tục tại quầy Lễ tân cho Quý Khách hàng,</br> việc đăng ký thông tin tiêm chủng chưa hỗ trợ đặt lịch hẹn chính xác theo giờ.</p>
-    
+
     <form id="registrationForm" novalidate class="custom-form">
         <h3>THÔNG TIN NGƯỜI TIÊM</h3>
         <div class="row mb-3">

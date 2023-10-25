@@ -81,14 +81,14 @@
                         <div class="col-lg-4 ">
                             <div class="product__item">
                                 <div class="">
-                                    <a href="@Url.Action("Details", "Sanpham", new {@id = p.MaVaccin}, null)">
-                                        <img src="~/images/@p.HinhAnh" id="img_giua" alt="...">
+                                    <a href="@Url.Action("Details", "Sanpham", new {@id = p.MaVC}, null)">
+                                        <img src="~/images/@p.HinhAnhVC" id="img_giua" alt="...">
                                     </a>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6>@p.TenVaccin</h6>
-                                    <a href="@Url.Action("ThemGioHang", "Cart", new { idAo = p.MaVaccin, strURL = Request.Url.ToString() })" class="add-cart">+ Thêm vào giỏ hàng</a>
-                                    <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBan)</h5>
+                                    <h6>@p.TenVC</h6>
+                                    <a href="@Url.Action("ThemGioHang", "Cart", new { idAo = p.MaVC, strURL = Request.Url.ToString() })" class="add-cart">+ Thêm vào giỏ hàng</a>
+                                    <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBanVC)</h5>
                                 </div>
 
                             </div>

@@ -236,35 +236,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\Vaccine\HUYẾT THANH UỐN VÁN %28SAT%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN 5 TRONG 1 PENTAXIM %285IN1%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN 6 TRONG 1 HEXAXIM %286IN1%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN 6 TRONG 1 INFANRIX HEXA %286IN1%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN ABHAYRAB 0.5ML %28ẤN ĐỘ%29 PHÒNG BỆNH DẠI %28TIÊM TRONG DA%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN CÚM INFLUVAC TETRA 0.5ML.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG BẠCH HẦU - HO GÀ - UỐN VÁN ADACEL.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG BỆNH DO PHẾ CẦU KHUẨN PREVENAR 13.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG BỆNH VIÊM NÃO NHẬT BẢN JEEV %28ẤN ĐỘ%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG CÁC BỆNH DO PHẾ CẦU KHUẨN SYNFLORIX.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG DẠI VERORAB %28TIÊM TRONG DA%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG HIB QUIMIHIB.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG LAO BCG %28LIỀU 0,1ML%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG THƯƠNG HÀN - TYPHIM VI.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG TIÊU CHẢY DO ROTA VIRUS - ROTARIX.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG TIÊU CHẢY DO ROTA VIRUS - ROTATEQ.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG UNG THƯ CỔ TỬ CUNG GARDASIL.png" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG UNG THƯ CỔ TỬ CUNG VÀ SÙI MÀO GÀ GARDASIL 9.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG VIÊM GAN A - AVAXIM 80U.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN PHÒNG VIÊM GAN B GENE-HBVAX 1ML.png" />
-    <Content Include="Images\Vaccine\VẮC XIN PRIORIX PHÒNG BỆNH SỞI - QUAI BỊ - RUBELLA.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN SỞI - QUAI BỊ - RUBELLA MMR II %28MỸ%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN SỞI MVVAC %28LIỀU 0.5ML%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN THUỶ ĐẬU VARICELLA.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN TẢ MORCVAX.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN TỨ GIÁ VAXIGRIP TETRA PHÒNG BỆNH CÚM MÙA.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN UỐN VÁN HẤP PHỤ %28TT%29.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN VIÊM GAN A+B TWINRIX.jpg" />
-    <Content Include="Images\Vaccine\VẮC XIN VIÊM NÃO NHẬT BẢN B IMOJEV.jpg" />
+    <Content Include="Images\Logo\logovc.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\assets\vendor\bootstrap-icons\bootstrap-icons.json" />
@@ -350,8 +322,6 @@
     <Content Include="Views\Home\Loai.cshtml" />
     <Content Include="Views\Sanpham\LoaiVaccine.cshtml" />
     <Content Include="Views\Sanpham\Details.cshtml" />
-    <Content Include="Views\Home\NhomVacxin.cshtml" />
-    <Content Include="Views\Sanpham\NhomVaccine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,12 +23,7 @@ namespace CodeWeb.Controllers
             return PartialView(model);
         }
 
-        public ActionResult NhomVacxin()
-        {
-            var model2 = db.NhomVaccines.OrderByDescending(p => p.TenNhom);
-            return PartialView(model2);
-        }
-
+        
         public ActionResult DangKyTiem()
         {
             return View();

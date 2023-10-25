@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CodeWeb.Models.Vaccine>
 
 @{
-    ViewBag.Title = "Vắc xin";
+    ViewBag.Title = "Danh sách Vaccine";
     Layout = "~/Views/Shared/MainView.cshtml";
 }
 
@@ -19,7 +19,7 @@
 }
 <style>
     a {
-        color: #000000;
+        color: #1977cc;
     }
 
         a:hover {
@@ -27,6 +27,12 @@
         }
 </style>
 <!-- Shop Section Begin -->
+@Html.ActionLink("Trang chủ", "Index", "Home")
+
+@if (!string.IsNullOrEmpty(ViewBag.Title) && !string.Equals(ViewBag.Title, "Trang chủ", StringComparison.OrdinalIgnoreCase))
+{
+    @: > @ViewBag.Title
+}
 <section class="shop spad">
     <div class="container">
         <div class="row">
@@ -48,22 +54,8 @@
                                         @Html.Action("Loai", "Home")
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <div class="text" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Nhóm vắc-xin
-                                    </div>
-                                </h5>
-                            </div>
+                            </div>                         
 
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <ul class="list-group">
-                                        @Html.Action("NhomVacxin", "Home")
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -93,14 +85,14 @@
                         <div class="col-lg-4 ">
                             <div class="product__item">
                                 <div class="">
-                                    <a href="@Url.Action("Details", "Sanpham", new {@id = p.MaVaccin}, null)">
-                                        <img src="~/images/@p.HinhAnh" id="img_giua" alt="...">
+                                    <a href="@Url.Action("Details", "Sanpham", new {@id = p.MaVC}, null)">
+                                        <img src="~/images/@Html.Raw(p.HinhAnhVC)" id="img_giua" alt="...">
                                     </a>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6>@p.TenVaccin</h6>
-                                    <a href="@Url.Action("ThemGioHang", "Cart", new { idAo = p.MaVaccin, strURL = Request.Url.ToString() })" class="add-cart">+ Thêm vào giỏ hàng</a>
-                                    <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBan)</h5>
+                                    <h6>@p.TenVC</h6>
+                                    <a href="@Url.Action("ThemGioHang", "Cart", new { idAo = p.MaVC, strURL = Request.Url.ToString() })" class="add-cart">+ Thêm vào giỏ hàng</a>
+                                    <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBanVC)</h5>
                                 </div>
 
                             </div>
@@ -157,6 +149,6 @@
             </td>
         </tr>
     </div>
-   
+
 </section>
 <!-- Shop Section End -->

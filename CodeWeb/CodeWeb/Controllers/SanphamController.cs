@@ -22,22 +22,22 @@ namespace CodeWeb.Controllers
             {
                 if (IconClass == "fa-sort-asc")
                 {
-                    vaccines = vaccines.OrderBy(row => row.GiaBan).ToList();
+                    vaccines = vaccines.OrderBy(row => row.GiaBanVC).ToList();
                 }
                 else
                 {
-                    vaccines = vaccines.OrderByDescending(row => row.GiaBan).ToList();
+                    vaccines = vaccines.OrderByDescending(row => row.GiaBanVC).ToList();
                 }
             }
             else if (SortColumn == "MaVaccin")
             {
                 if (IconClass == "fa-sort-asc")
                 {
-                    vaccines = vaccines.OrderBy(row => row.MaVaccin).ToList();
+                    vaccines = vaccines.OrderBy(row => row.MaVC).ToList();
                 }
                 else
                 {
-                    vaccines = vaccines.OrderByDescending(row => row.MaVaccin).ToList();
+                    vaccines = vaccines.OrderByDescending(row => row.MaVC).ToList();
                 }
             }
 
@@ -54,13 +54,19 @@ namespace CodeWeb.Controllers
         }
         public ActionResult Details(int id)
         {
-            var Vaccine = db.Vaccines.Single(t => t.MaVaccin == id);
+            var Vaccine = db.Vaccines.SingleOrDefault(t => t.MaVC == id);
             if (Vaccine == null)
             {
                 return HttpNotFound();
             }
+
+            // Đặt giá trị cho ViewBag.Title và ViewBag.ProductName
+            ViewBag.Title = "Sản phẩm";
+            ViewBag.ProductName = Vaccine.TenVC;
+
             return View(Vaccine);
         }
+
 
 
         public ActionResult LoaiVaccine(int Maloai)
@@ -77,25 +83,7 @@ namespace CodeWeb.Controllers
                 ViewBag.Loai = ten;
             }
             return View(list);
-        }
-
-        public ActionResult NhomVaccine(int Manhom)
-        {
-            var nhomvc = db.NhomVaccines.Where(s => s.MaNhom == Manhom).ToList();
-
-            if (nhomvc.Count == 0)
-            {
-                ViewBag.TB = "Khong tim thay";
-            }
-            else
-            {
-                string ten = db.NhomVaccines.Where(s => s.MaNhom == Manhom).ToString();
-                ViewBag.Loai = ten;
-            }
-
-
-            return View(nhomvc);
-        }
+        }      
 
     }
 }
