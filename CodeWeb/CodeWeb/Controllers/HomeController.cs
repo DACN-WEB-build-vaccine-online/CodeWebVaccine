@@ -33,9 +33,10 @@ namespace CodeWeb.Controllers
         {
             return View();
         }
-        public ActionResult Login()
+        public ActionResult DangXuat()
         {
-            return View();
+            Session.Clear();
+            return RedirectToAction("Index");
         }
     }
 }

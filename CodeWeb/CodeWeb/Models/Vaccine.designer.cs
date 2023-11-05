@@ -535,7 +535,7 @@ namespace CodeWeb.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnhVC", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnhVC", DbType="NVarChar(MAX)")]
 		public string HinhAnhVC
 		{
 			get
@@ -1133,7 +1133,13 @@ namespace CodeWeb.Models
 		
 		private string _DiaChiKH;
 		
+		private string _HinhAnhKH;
+		
+		private string _TenTK;
+		
 		private EntitySet<NguoiTiemChung> _NguoiTiemChungs;
+		
+		private EntityRef<TaiKhoan> _TaiKhoan;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1153,11 +1159,16 @@ namespace CodeWeb.Models
     partial void OnEmailKHChanged();
     partial void OnDiaChiKHChanging(string value);
     partial void OnDiaChiKHChanged();
+    partial void OnHinhAnhKHChanging(string value);
+    partial void OnHinhAnhKHChanged();
+    partial void OnTenTKChanging(string value);
+    partial void OnTenTKChanged();
     #endregion
 		
 		public KhachHang()
 		{
 			this._NguoiTiemChungs = new EntitySet<NguoiTiemChung>(new Action<NguoiTiemChung>(this.attach_NguoiTiemChungs), new Action<NguoiTiemChung>(this.detach_NguoiTiemChungs));
+			this._TaiKhoan = default(EntityRef<TaiKhoan>);
 			OnCreated();
 		}
 		
@@ -1301,6 +1312,50 @@ namespace CodeWeb.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnhKH", DbType="NVarChar(MAX)")]
+		public string HinhAnhKH
+		{
+			get
+			{
+				return this._HinhAnhKH;
+			}
+			set
+			{
+				if ((this._HinhAnhKH != value))
+				{
+					this.OnHinhAnhKHChanging(value);
+					this.SendPropertyChanging();
+					this._HinhAnhKH = value;
+					this.SendPropertyChanged("HinhAnhKH");
+					this.OnHinhAnhKHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTK", DbType="VarChar(30)")]
+		public string TenTK
+		{
+			get
+			{
+				return this._TenTK;
+			}
+			set
+			{
+				if ((this._TenTK != value))
+				{
+					if (this._TaiKhoan.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTenTKChanging(value);
+					this.SendPropertyChanging();
+					this._TenTK = value;
+					this.SendPropertyChanged("TenTK");
+					this.OnTenTKChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KhachHang_NguoiTiemChung", Storage="_NguoiTiemChungs", ThisKey="MaKH", OtherKey="MaKH")]
 		public EntitySet<NguoiTiemChung> NguoiTiemChungs
 		{
@@ -1311,6 +1366,40 @@ namespace CodeWeb.Models
 			set
 			{
 				this._NguoiTiemChungs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_KhachHang", Storage="_TaiKhoan", ThisKey="TenTK", OtherKey="TenTK", IsForeignKey=true)]
+		public TaiKhoan TaiKhoan
+		{
+			get
+			{
+				return this._TaiKhoan.Entity;
+			}
+			set
+			{
+				TaiKhoan previousValue = this._TaiKhoan.Entity;
+				if (((previousValue != value) 
+							|| (this._TaiKhoan.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TaiKhoan.Entity = null;
+						previousValue.KhachHangs.Remove(this);
+					}
+					this._TaiKhoan.Entity = value;
+					if ((value != null))
+					{
+						value.KhachHangs.Add(this);
+						this._TenTK = value.TenTK;
+					}
+					else
+					{
+						this._TenTK = default(string);
+					}
+					this.SendPropertyChanged("TaiKhoan");
+				}
 			}
 		}
 		
@@ -2332,9 +2421,11 @@ namespace CodeWeb.Models
 		
 		private string _HinhAnhNV;
 		
+		private string _TenTK;
+		
 		private EntitySet<NhapKho> _NhapKhos;
 		
-		private EntitySet<TaiKhoan> _TaiKhoans;
+		private EntityRef<TaiKhoan> _TaiKhoan;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2358,12 +2449,14 @@ namespace CodeWeb.Models
     partial void OnEmailNVChanged();
     partial void OnHinhAnhNVChanging(string value);
     partial void OnHinhAnhNVChanged();
+    partial void OnTenTKChanging(string value);
+    partial void OnTenTKChanged();
     #endregion
 		
 		public NhanVien()
 		{
 			this._NhapKhos = new EntitySet<NhapKho>(new Action<NhapKho>(this.attach_NhapKhos), new Action<NhapKho>(this.detach_NhapKhos));
-			this._TaiKhoans = new EntitySet<TaiKhoan>(new Action<TaiKhoan>(this.attach_TaiKhoans), new Action<TaiKhoan>(this.detach_TaiKhoans));
+			this._TaiKhoan = default(EntityRef<TaiKhoan>);
 			OnCreated();
 		}
 		
@@ -2547,6 +2640,30 @@ namespace CodeWeb.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTK", DbType="VarChar(30)")]
+		public string TenTK
+		{
+			get
+			{
+				return this._TenTK;
+			}
+			set
+			{
+				if ((this._TenTK != value))
+				{
+					if (this._TaiKhoan.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTenTKChanging(value);
+					this.SendPropertyChanging();
+					this._TenTK = value;
+					this.SendPropertyChanged("TenTK");
+					this.OnTenTKChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NhanVien_NhapKho", Storage="_NhapKhos", ThisKey="MaNV", OtherKey="MaNV")]
 		public EntitySet<NhapKho> NhapKhos
 		{
@@ -2560,16 +2677,37 @@ namespace CodeWeb.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NhanVien_TaiKhoan", Storage="_TaiKhoans", ThisKey="MaNV", OtherKey="MaNV")]
-		public EntitySet<TaiKhoan> TaiKhoans
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_NhanVien", Storage="_TaiKhoan", ThisKey="TenTK", OtherKey="TenTK", IsForeignKey=true)]
+		public TaiKhoan TaiKhoan
 		{
 			get
 			{
-				return this._TaiKhoans;
+				return this._TaiKhoan.Entity;
 			}
 			set
 			{
-				this._TaiKhoans.Assign(value);
+				TaiKhoan previousValue = this._TaiKhoan.Entity;
+				if (((previousValue != value) 
+							|| (this._TaiKhoan.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TaiKhoan.Entity = null;
+						previousValue.NhanViens.Remove(this);
+					}
+					this._TaiKhoan.Entity = value;
+					if ((value != null))
+					{
+						value.NhanViens.Add(this);
+						this._TenTK = value.TenTK;
+					}
+					else
+					{
+						this._TenTK = default(string);
+					}
+					this.SendPropertyChanged("TaiKhoan");
+				}
 			}
 		}
 		
@@ -2600,18 +2738,6 @@ namespace CodeWeb.Models
 		}
 		
 		private void detach_NhapKhos(NhapKho entity)
-		{
-			this.SendPropertyChanging();
-			entity.NhanVien = null;
-		}
-		
-		private void attach_TaiKhoans(TaiKhoan entity)
-		{
-			this.SendPropertyChanging();
-			entity.NhanVien = this;
-		}
-		
-		private void detach_TaiKhoans(TaiKhoan entity)
 		{
 			this.SendPropertyChanging();
 			entity.NhanVien = null;
@@ -3086,17 +3212,11 @@ namespace CodeWeb.Models
 		
 		private string _TenTK;
 		
-		private string _HinhAnhTK;
-		
 		private string _MatKhau;
 		
-		private string _Quyen;
+		private EntitySet<KhachHang> _KhachHangs;
 		
-		private System.Nullable<bool> _HoatDong;
-		
-		private System.Nullable<int> _MaNV;
-		
-		private EntityRef<NhanVien> _NhanVien;
+		private EntitySet<NhanVien> _NhanViens;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3104,21 +3224,14 @@ namespace CodeWeb.Models
     partial void OnCreated();
     partial void OnTenTKChanging(string value);
     partial void OnTenTKChanged();
-    partial void OnHinhAnhTKChanging(string value);
-    partial void OnHinhAnhTKChanged();
     partial void OnMatKhauChanging(string value);
     partial void OnMatKhauChanged();
-    partial void OnQuyenChanging(string value);
-    partial void OnQuyenChanged();
-    partial void OnHoatDongChanging(System.Nullable<bool> value);
-    partial void OnHoatDongChanged();
-    partial void OnMaNVChanging(System.Nullable<int> value);
-    partial void OnMaNVChanged();
     #endregion
 		
 		public TaiKhoan()
 		{
-			this._NhanVien = default(EntityRef<NhanVien>);
+			this._KhachHangs = new EntitySet<KhachHang>(new Action<KhachHang>(this.attach_KhachHangs), new Action<KhachHang>(this.detach_KhachHangs));
+			this._NhanViens = new EntitySet<NhanVien>(new Action<NhanVien>(this.attach_NhanViens), new Action<NhanVien>(this.detach_NhanViens));
 			OnCreated();
 		}
 		
@@ -3138,26 +3251,6 @@ namespace CodeWeb.Models
 					this._TenTK = value;
 					this.SendPropertyChanged("TenTK");
 					this.OnTenTKChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnhTK", DbType="NVarChar(MAX)")]
-		public string HinhAnhTK
-		{
-			get
-			{
-				return this._HinhAnhTK;
-			}
-			set
-			{
-				if ((this._HinhAnhTK != value))
-				{
-					this.OnHinhAnhTKChanging(value);
-					this.SendPropertyChanging();
-					this._HinhAnhTK = value;
-					this.SendPropertyChanged("HinhAnhTK");
-					this.OnHinhAnhTKChanged();
 				}
 			}
 		}
@@ -3182,101 +3275,29 @@ namespace CodeWeb.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quyen", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Quyen
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_KhachHang", Storage="_KhachHangs", ThisKey="TenTK", OtherKey="TenTK")]
+		public EntitySet<KhachHang> KhachHangs
 		{
 			get
 			{
-				return this._Quyen;
+				return this._KhachHangs;
 			}
 			set
 			{
-				if ((this._Quyen != value))
-				{
-					this.OnQuyenChanging(value);
-					this.SendPropertyChanging();
-					this._Quyen = value;
-					this.SendPropertyChanged("Quyen");
-					this.OnQuyenChanged();
-				}
+				this._KhachHangs.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoatDong", DbType="Bit")]
-		public System.Nullable<bool> HoatDong
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_NhanVien", Storage="_NhanViens", ThisKey="TenTK", OtherKey="TenTK")]
+		public EntitySet<NhanVien> NhanViens
 		{
 			get
 			{
-				return this._HoatDong;
+				return this._NhanViens;
 			}
 			set
 			{
-				if ((this._HoatDong != value))
-				{
-					this.OnHoatDongChanging(value);
-					this.SendPropertyChanging();
-					this._HoatDong = value;
-					this.SendPropertyChanged("HoatDong");
-					this.OnHoatDongChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNV", DbType="Int")]
-		public System.Nullable<int> MaNV
-		{
-			get
-			{
-				return this._MaNV;
-			}
-			set
-			{
-				if ((this._MaNV != value))
-				{
-					if (this._NhanVien.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaNVChanging(value);
-					this.SendPropertyChanging();
-					this._MaNV = value;
-					this.SendPropertyChanged("MaNV");
-					this.OnMaNVChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NhanVien_TaiKhoan", Storage="_NhanVien", ThisKey="MaNV", OtherKey="MaNV", IsForeignKey=true)]
-		public NhanVien NhanVien
-		{
-			get
-			{
-				return this._NhanVien.Entity;
-			}
-			set
-			{
-				NhanVien previousValue = this._NhanVien.Entity;
-				if (((previousValue != value) 
-							|| (this._NhanVien.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NhanVien.Entity = null;
-						previousValue.TaiKhoans.Remove(this);
-					}
-					this._NhanVien.Entity = value;
-					if ((value != null))
-					{
-						value.TaiKhoans.Add(this);
-						this._MaNV = value.MaNV;
-					}
-					else
-					{
-						this._MaNV = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("NhanVien");
-				}
+				this._NhanViens.Assign(value);
 			}
 		}
 		
@@ -3298,6 +3319,30 @@ namespace CodeWeb.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_KhachHangs(KhachHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.TaiKhoan = this;
+		}
+		
+		private void detach_KhachHangs(KhachHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.TaiKhoan = null;
+		}
+		
+		private void attach_NhanViens(NhanVien entity)
+		{
+			this.SendPropertyChanging();
+			entity.TaiKhoan = this;
+		}
+		
+		private void detach_NhanViens(NhanVien entity)
+		{
+			this.SendPropertyChanging();
+			entity.TaiKhoan = null;
 		}
 	}
 }

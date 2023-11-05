@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@using CodeWeb.Models;
 <html lang="en">
 
 <head>
@@ -30,6 +31,11 @@
 
     <!-- Template Main CSS File -->
     <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    @{
+        KhachHang kh = Session["KH"] as KhachHang;
+    }
+
 </head>
 
 <body>
@@ -40,29 +46,14 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="@Url.Action("Index","Home")">Đăng ký tiêm chủng Online</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <a href="@Url.Action("Index","Home")" class="logo me-auto"><img src="~/Images/Logo/logovc.svg" alt="" class="img-fluid"></a>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link scrollto active" href="@Url.Action("Index","Home")">Trang chủ</a></li>
                     <li class="dropdown">
                         <a href="@Url.Action("DangKyTiem","Home")"><span>Đăng ký tiêm</span></a>
-                        <ul>
-                            <li><a href="#">Đăng ký tiêm vắc xin cho cá nhân</a></li>
-                            @*<li class="dropdown">
-                    <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                    <ul>
-                        <li><a href="#">Deep Drop Down 1</a></li>
-                        <li><a href="#">Deep Drop Down 2</a></li>
-                        <li><a href="#">Deep Drop Down 3</a></li>
-                        <li><a href="#">Deep Drop Down 4</a></li>
-                        <li><a href="#">Deep Drop Down 5</a></li>
-                    </ul>
-                </li>*@
-                            <li><a href="#">Đăng ký tiêm vắc xin cho tổ chức</a></li>
-                        </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="@Url.Action("ShowVaccine","Sanpham")">Danh sách Vaccine</a></li>
                     <li class="dropdown">
@@ -73,14 +64,36 @@
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="@Url.Action("Contact","Home")">Liên hệ</a></li>
-                    <li><button href="#appointment" class="custom-button"><span class="d-none d-md-inline">Đăng Nhập</span></button></li>
+
+                    <li>
+                        <a href="#" class="search-switch">
+                            <img src="~/images/KhachHang/img/icon/search.svg" width="21" height="21" alt="">
+                        </a>
+                    </li>
+
+                    <li class="user-dropdown">
+                        @if (kh != null)
+                        {
+                            <div class="user-profile">
+                                <img src="~/images/KhachHang/img/icon/user.svg" width="21" height="21" alt="">
+                                <div class="user-details">
+                                    <span class="username">@kh.HoTenKH</span>
+                                    <span class="logout"><a href="@Url.Action("DangXuat", "Home")">Đăng Xuất</a></span>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="default-icon">
+                                <a href="@Url.Action("DangNhap","Auth")">
+                                    <img src="~/images/KhachHang/img/icon/user.svg" width="21" height="21" alt="">
+                                </a>
+                            </div>
+                        }
+                    </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
-                
             </nav><!-- .navbar -->
-
-            
-
         </div>
     </header><!-- End Header -->
     <!-- ======= Hero Section ======= -->

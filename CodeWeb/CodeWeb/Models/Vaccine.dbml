@@ -14,7 +14,7 @@
     <Type Name="Vaccine">
       <Column Name="MaVC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TenVC" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="HinhAnhVC" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="HinhAnhVC" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NguonGocVC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MoTaVC" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="TinhTrangVC" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
@@ -50,7 +50,10 @@
       <Column Name="SoDienThoaiKH" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="EmailKH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DiaChiKH" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="HinhAnhKH" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TenTK" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Association Name="KhachHang_NguoiTiemChung" Member="NguoiTiemChungs" ThisKey="MaKH" OtherKey="MaKH" Type="NguoiTiemChung" />
+      <Association Name="TaiKhoan_KhachHang" Member="TaiKhoan" ThisKey="TenTK" OtherKey="TenTK" Type="TaiKhoan" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.LoaiVaccine" Member="LoaiVaccines">
@@ -113,8 +116,9 @@
       <Column Name="NgaySinhNV" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="EmailNV" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="HinhAnhNV" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TenTK" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Association Name="NhanVien_NhapKho" Member="NhapKhos" ThisKey="MaNV" OtherKey="MaNV" Type="NhapKho" />
-      <Association Name="NhanVien_TaiKhoan" Member="TaiKhoans" ThisKey="MaNV" OtherKey="MaNV" Type="TaiKhoan" />
+      <Association Name="TaiKhoan_NhanVien" Member="TaiKhoan" ThisKey="TenTK" OtherKey="TenTK" Type="TaiKhoan" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.NhapKho" Member="NhapKhos">
@@ -141,12 +145,9 @@
   <Table Name="dbo.TaiKhoan" Member="TaiKhoans">
     <Type Name="TaiKhoan">
       <Column Name="TenTK" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HinhAnhTK" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MatKhau" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Quyen" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="HoatDong" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="NhanVien_TaiKhoan" Member="NhanVien" ThisKey="MaNV" OtherKey="MaNV" Type="NhanVien" IsForeignKey="true" />
+      <Association Name="TaiKhoan_KhachHang" Member="KhachHangs" ThisKey="TenTK" OtherKey="TenTK" Type="KhachHang" />
+      <Association Name="TaiKhoan_NhanVien" Member="NhanViens" ThisKey="TenTK" OtherKey="TenTK" Type="NhanVien" />
     </Type>
   </Table>
 </Database>

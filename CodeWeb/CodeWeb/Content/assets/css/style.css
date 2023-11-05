@@ -189,7 +189,7 @@ h6 {
 }
 
 #header .logo img {
-  max-height: 40px;
+  max-height: 70px;
 }
 
 /**
@@ -222,6 +222,36 @@ h6 {
     border-radius: 5px;
     cursor: pointer;
 }
+.user-dropdown a[href*="DangNhap"] {
+    display: none;
+}
+.user-dropdown .default-icon {
+    display: inline-block;
+}
+
+    .user-dropdown .default-icon a {
+        display: inline-block;
+    }
+
+
+.user-details {
+    display: none;
+    position: absolute;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.user-dropdown:hover .user-details {
+    display: block;
+}
+
+.username,
+.logout {
+    display: block;
+    text-align: center;
+}
+
 
 .custom-button:hover {
         background-color: #0e56a1;
