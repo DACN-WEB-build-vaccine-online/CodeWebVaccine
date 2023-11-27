@@ -86,6 +86,4 @@
             invalidFeedback.text('');
         }
     }
-
-   
 });

@@ -29,6 +29,15 @@ namespace CodeWeb.Controllers
             return View();
         }
 
+        public ActionResult TrangTinTuc()
+        {
+            return View();
+        }
+        public ActionResult LiDoTiemVC()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             return View();

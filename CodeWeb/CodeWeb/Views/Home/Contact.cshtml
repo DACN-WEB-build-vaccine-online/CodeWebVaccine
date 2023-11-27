@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/MainView.cshtml";
+}
+
+@Html.ActionLink("Trang chủ", "Index", "Home")
+
+@if (!string.IsNullOrEmpty(ViewBag.Title) && !string.Equals(ViewBag.Title, "Trang chủ", StringComparison.OrdinalIgnoreCase))
+{
+    @: > @ViewBag.Title
+}
+<section class="news-single section">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="single-main">
+                            <!-- News Head -->
+                            <div class="news-head">
+                                <img src="~/Content/assetsTinTuc/img/hinhlh.jpg" alt="#">
+                            </div>
+                            <!-- News Title -->
+                            <h1 class="news-title"><a href="#">Thông Tin Liên Hệ </a></h1>
+                            <!-- Meta -->
+                            <!-- News Text -->
+                            <div class="news-text">
+                                <p>Địa chỉ: 167 Pasteur, Phường Võ Thị Sáu, Quận 3, TP. Hồ Chí Minh</p>
+                                <p>Điện thoại: 0901526364</p>
+                                <p>Email: cskh@gmail.com</p>
+
+
+                                <b>(Quý khách đến xét nghiệm, tiêm ngừa, khám bệnh vui lòng đi cổng sau tại số 252 Nam Kỳ Khởi Nghĩa, Phường Võ Thị Sáu, Quận 3, Tp.HCM) </b>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

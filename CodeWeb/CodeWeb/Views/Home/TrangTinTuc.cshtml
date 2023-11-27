@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Trang Tin tức";
+    Layout = "~/Views/Shared/MainView.cshtml";
+}
+
+@Html.ActionLink("Trang chủ", "Index", "Home")
+
+@if (!string.IsNullOrEmpty(ViewBag.Title) && !string.Equals(ViewBag.Title, "Trang chủ", StringComparison.OrdinalIgnoreCase))
+{
+    @: > @ViewBag.Title
+}
+
