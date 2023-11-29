@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/lg_reg_layout.cshtml";
+}
+
+<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-lg-7">
+                <img src="~/Images/KhachHang/background.svg" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="login-box bg-white box-shadow border-radius-10">
+                    <div class="login-title">
+                        <h2 class="text-center text-primary">Đăng Ký Tài Khoản</h2>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        <h7 style="color:red;text-align:left;">@ViewData["Loi"]</h7>
+
+                        <div class="input-group custom">
+                            @Html.TextBox("HotenKH", "", new { @class = "form-control", type = "text", placeholder = "Họ Tên Khách Hàng" })
+                        </div>
+                        <h7 style="color:red;text-align:left">@ViewData["Loi1"]</h7>
+
+                        <div class="input-group custom">
+                            @Html.TextBox("Ngaysinh", "", new { @class = "form-control", type = "date", placeholder = "Ngày Sinh" })
+                        </div>
+                        <h7 style="color:red;text-align:left">@ViewData["Loi6"]</h7>
+
+                        <div class="input-group custom">
+                            @Html.TextBox("TenDN", "", new { @class = "form-control", type = "text", placeholder = "Tên Đăng Nhập" })
+                        </div>
+                        <h7 style="color:red;text-align:left">@ViewData["Loi2"] </h7>
+
+                        <div class="input-group custom">
+                            @Html.Password("Matkhau", "", new { @class = "form-control", type = "password", placeholder = "Mật Khẩu" })
+                        </div>
+                        <h7 style="color:red;text-align:left">@ViewData["Loi3"]</h7>
+
+                        <div class="input-group custom">
+                            @Html.Password("ReMatkhau", "", new { @class = "form-control", type = "password", placeholder = "Nhập Lại Mật Khẩu" })
+                        </div>
+                        <h7 style="color:red;text-align:left">@ViewData["Loi4"]</h7>
+
+                        <div class="input-group custom">
+                            @Html.TextBox("Dienthoai", "", new { @class = "form-control", type = "tel", placeholder = "Điện Thoại" })
+                        </div>
+                        <h7 style="color:red;text-align:left">@ViewData["Loi5"]</h7>
+
+                        <div class="input-group custom">
+                            @Html.TextBox("Email", "", new { @class = "form-control", type = "email", placeholder = "Email" })
+                        </div>
+
+                        <div class="input-group custom">
+                            @Html.TextBox("Diachi", "", new { @class = "form-control", type = "text", placeholder = "Địa Chỉ" })
+                        </div>
+                        <h7 style="color:red;text-align:left">@ViewData["Loi6"]</h7>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-0">
+                                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Đăng ký">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-0">
+                                    <h7>Đã có tài khoản</h7> &nbsp; <h7>@Html.ActionLink("Đăng nhập", "DangNhap", null, new { style = "color: blue;" })</h7>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p style="color:red;text-align:center">@ViewBag.TB</p>

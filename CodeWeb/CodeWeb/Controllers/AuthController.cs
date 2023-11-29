@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,105 +14,104 @@ namespace CodeWeb.Controllers
     {
         //GET: NguoiDung
        VaccineDataContext db = new VaccineDataContext();
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-        //[HttpGet]
-        //public ActionResult DangKy()
-        //{
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                string hashedPassword = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
 
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult DangKy(KhachHang kh, TaiKhoan ac, FormCollection f)
-        //{
-        //    //gan cac gia tri nguoi dung tu form f cho cac bien
-        //    var hoten = f["HotenKH"];
-        //    var tendn = f["TenDN"];
-        //    var matkhau = f["MatKhau"];
-        //    var dienthoai = f["Dienthoai"];
-        //    var rematkhau = f["ReMatkhau"];
-        //    var email = f["Email"];
-        //    var gioitinh = f["Gioitinh"];
-        //    var diachi = f["Diachi"];
-        //    var ngaysinh = f["ngaysinh"];
-        //    if (string.IsNullOrEmpty(hoten))
-        //    {
-        //        ViewData["Loi1"] = "Họ tên không được bỏ trống!";
-        //    }
-        //    if (string.IsNullOrEmpty(tendn))
-        //    {
-        //        ViewData["Loi2"] = "Tên đăng nhập không được bỏ trống!";
-        //    }
-        //    if (string.IsNullOrEmpty(matkhau))
-        //    {
-        //        ViewData["Loi3"] = "Vui lòng nhập lại mật khẩu!";
-        //    }
-        //    if (string.IsNullOrEmpty(rematkhau))
-        //    {
-        //        ViewData["Loi4"] = "Vui lòng nhập lại mật khẩu!";
-        //    }
-        //    if (string.IsNullOrEmpty(dienthoai))
-        //    {
-        //        ViewData["Loi5"] = "Vui lòng nhập số điện thoại(Yêu cầu gồm 10 số)!";
-        //    }
-        //    if (string.IsNullOrEmpty(ngaysinh))
-        //    {
-        //        ViewData["Loi6"] = "Vui lòng nhập ngày sinh";
-        //    }
-        //    if (string.IsNullOrEmpty(email))
-        //    {
-        //        ViewData["Loi8"] = "Vui lòng nhập email!";
-        //    }
-        //    if (!string.IsNullOrEmpty(hoten) && !string.IsNullOrEmpty(tendn) && !string.IsNullOrEmpty(matkhau) && !string.IsNullOrEmpty(rematkhau) && !string.IsNullOrEmpty(dienthoai))
-        //    {
-        //        //gan gia tri cho doi tuong kh
-        //        kh.HoTenKH = hoten;
-        //        kh.TenTK = tendn;
-        //        ac.TenTK = tendn;
-        //        ac.MatKhau = matkhau;
-        //        kh.SoDienThoaiKH = dienthoai;
-        //        kh.NgaySinhKH = ngaysinh;
-        //        kh.EmailKH = email;
-        //        //ghi du lieu xuong csdl
-        //        var KQ = db.TaiKhoans.SingleOrDefault(t => t.TenTK == kh.TenTK);
-        //        var KQ1 = db.KhachHangs.SingleOrDefault(t => t.EmailKH == kh.EmailKH);
-        //        var KQ2 = db.KhachHangs.SingleOrDefault(t => t.SoDienThoaiKH == kh.SoDienThoaiKH);
-        //        var KQ3 = db.KhachHangs.SingleOrDefault(t => t.NgaySinhKH == kh.NgaySinhKH);
-        //        if (KQ != null || KQ1 != null || KQ2 != null || KQ3 != null)
-        //        {
+                if (hashedPassword.Length > 100)
+                {
+                    
+                    hashedPassword = hashedPassword.Substring(0, 100);
+                }
 
-        //            if (KQ != null) { ViewData["Loi2"] = "Tên đăng nhập đã tồn tại vui lòng nhập tên khác!"; }
-        //            if (KQ1 != null) { ViewData["Loi8"] = "Mail đã có!"; }
-        //            if (KQ2 != null) { ViewData["Loi5"] = "Số điện thoại đã có!"; }
-        //            if (KQ3 != null) { ViewData["Loi6"] = "CMND/CCCD  đã có!"; }
-        //            return View();
+                return hashedPassword;
+            }
+        }
 
-        //        }
-        //        else
-        //        {
-        //            if (dienthoai.Length == 10 && soCMND.Length == 12 && soCMND != null && dienthoai != null && tendn != null && matkhau != null && rematkhau != null && email != null)
-        //            {
-        //                db.TaiKhoans.InsertOnSubmit(ac);
-        //                db.KhachHangs.InsertOnSubmit(kh);
 
-        //                db.SubmitChanges();
-        //                //ViewBag.TB = "Đăng ký thành công!";
-        //                return RedirectToAction("DangNhap", "Auth");
-        //            }
-        //            else
-        //            {
-        //                ViewData["Loi2"] = "Tên đăng nhập đã tồn tại vui lòng nhập tên khác!";
-        //                ViewData["Loi5"] = "Yêu cầu nhập lại số điện thoại gồm 10 số!";
-        //                ViewData["Loi6"] = "Yêu cầu nhập lại số CMND/CCCD vào gồm 12 số!";
-        //                ViewData["Loi5"] = "Yêu cầu nhập lại email!";
-        //                return View();
-        //            }
-        //        }
-        //    }
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult DangKy()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DangKy(KhachHang kh, TaiKhoan ac, FormCollection f)
+        {
+            var hoten = f["HotenKH"];
+            var tendn = f["TenDN"];
+            var matkhau = f["MatKhau"];
+            var rematkhau = f["ReMatkhau"];
+            var dienthoai = f["Dienthoai"];
+            var ngaysinh = f["Ngaysinh"];
+            var diachi = f["diachi"];
+            var email = f["email"];
+
+            if (string.IsNullOrEmpty(hoten) ||
+                string.IsNullOrEmpty(tendn) ||
+                string.IsNullOrEmpty(matkhau) ||
+                string.IsNullOrEmpty(rematkhau) ||
+                string.IsNullOrEmpty(dienthoai) ||
+                string.IsNullOrEmpty(ngaysinh) ||
+                string.IsNullOrEmpty(email) ||
+                string.IsNullOrEmpty(diachi))
+            {
+                ViewData["Loi"] = "Vui lòng điền đầy đủ thông tin!";
+                return View();
+            }
+
+            if (matkhau != rematkhau)
+            {
+                ViewData["Loi"] = "Mật khẩu nhập lại không khớp!";
+                return View();
+            }
+
+            // Kiểm tra độ dài số điện thoại 
+            if (dienthoai.Length != 10)
+            {
+                ViewData["Loi"] = "Số điện thoại phải có 10 số!";
+                return View();
+            }
+
+            // Kiểm tra sự tồn tại của tên đăng nhập
+            if (db.TaiKhoans.Any(t => t.TenTK == tendn))
+            {
+                ViewData["Loi"] = "Tên đăng nhập đã tồn tại!";
+                return View();
+            }
+
+            // Gắn mã tài khoản vào bảng TAIKHOAN
+            ac.TenTK = tendn;
+
+            // Mã hóa mật khẩu
+            ac.MatKhau = HashPassword(matkhau);
+
+            // Kiểm tra và giảm độ dài nếu cần
+            if (ac.MatKhau.Length > 100)
+            {
+                ac.MatKhau = ac.MatKhau.Substring(0, 100);
+            }
+
+            db.TaiKhoans.InsertOnSubmit(ac);
+            db.SubmitChanges();
+
+            // Gắn mã tài khoản vào bảng KHACHHANG
+            kh.TenTK = ac.TenTK; // Giả sử là khóa chính của TAIKHOAN
+            kh.HoTenKH = hoten;
+            kh.SoDienThoaiKH = dienthoai;
+            kh.NgaySinhKH = DateTime.Parse(ngaysinh);
+            kh.DiaChiKH = diachi;
+            kh.EmailKH = email;
+
+            db.KhachHangs.InsertOnSubmit(kh);
+            db.SubmitChanges();
+
+            ViewBag.TB = "Đăng ký thành công!";
+            return RedirectToAction("DangNhap", "Auth");
+        }
+
 
         public ActionResult DangNhap()
         {

@@ -60,7 +60,6 @@ namespace CodeWeb.Controllers
                 return HttpNotFound();
             }
 
-            // Đặt giá trị cho ViewBag.Title và ViewBag.ProductName
             ViewBag.Title = "Sản phẩm";
             ViewBag.ProductName = Vaccine.TenVC;
 
@@ -83,7 +82,16 @@ namespace CodeWeb.Controllers
                 ViewBag.Loai = ten;
             }
             return View(list);
-        }      
+        }
 
+        [HttpPost]
+        public ActionResult TimKiem(string tenVC)
+        {
+            var danhSachVaccine = db.Vaccines
+                .Where(v => v.TenVC.Contains(tenVC))
+                .ToList();
+
+            return View("TimKiem", danhSachVaccine);
+        }
     }
 }

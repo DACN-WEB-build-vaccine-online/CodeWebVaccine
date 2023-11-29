@@ -1,59 +1,78 @@
 ﻿@{
     ViewBag.Title = "Đăng nhập";
-    Layout = null;
+    Layout = "~/Views/Shared/lg_reg_layout.cshtml";
 }
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link rel="stylesheet" href="~/Content/assets/login/style.css">
 
+<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
     <div class="container">
-        <div class="form-container sign-in">
-
-            @using (Html.BeginForm())
-            {
-                @Html.ValidationSummary(true)
-                {<h1>Đăng Nhập</h1>
-
-                    <div class="input-group custom">
-                        <td>@Html.TextBox("TenDN", "", new { @class = "form-control", type = "text", placeholder = "Tên Đăng Nhập" })</td>
-                        <div class="input-group-append custom">
-                            <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
-                        </div>
+        <div class="row align-items-center">
+            <div class="col-md-6 col-lg-7">
+                <img src="~/Images/KhachHang/background.svg" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="login-box bg-white box-shadow border-radius-10">
+                    <div class="login-title">
+                        <h2 class="text-center text-primary">Đăng Nhập Tài Khoản</h2>
                     </div>
-                    <h7 style="color:red;text-align:left">@ViewData["Loi1"]</h7>
-
-                    <div class="input-group custom">
-                        <td>@Html.Password("MatKhau", "", new { @class = "form-control", type = "password", placeholder = "Mật Khẩu" })</td>
-                        <div class="input-group-append custom">
-                            <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
-                        </div>
-                    </div>
-                    <h7 style="color:red;text-align:left">@ViewData["Loi2"]</h7>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-primary btn-lg" type="submit">Đăng nhập</button>
-
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        <div class="mb-3">
+                            <p style="color:red;">@ViewData["Loi1"]</p>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-user"> Tài khoản</i></span>
+                                </span>
+                                @Html.TextBox("TenDN", "", new { @class = "form-control", type = "text", placeholder = "Tên Đăng Nhập" })
                             </div>
                         </div>
-                    </div>
-                }
-            }
-        </div>
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <h1>Xin chào</h1>
-                    <p>Nếu bạn đã có tài khoản, vui lòng đăng nhập tài khoản</p> 
-                    <button class="hidden" id="login">Đăng nhập</button>
-                </div>
-                <div class="toggle-panel toggle-right">
-                    <h1>Xin chào</h1>
-                    <p>Đăng ký với thông tin cá nhân của bạn để sử dụng dịch vụ</p>
-                    <button class="hidden" id="register"><a href="@Url.Action("DangKy","Auth")">Đăng ký</a></button>
+                        <div class="mb-3">
+                            <p style="color:red;">@ViewData["Loi2"]</p>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-lock"> Mật khẩu</i></span>
+                                </span>
+                                @Html.Password("MatKhau", "", new { @class = "form-control", type = "password", placeholder = "Mật Khẩu" , @id = "MatKhau" })
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="cursor: pointer;" onclick="togglePassword()">
+                                        <i id="eyeIcon" class="fa fa-eye"></i> <span id="eyeText" style="margin-left: 5px;">Hiện mật khẩu</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Đăng nhập">
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                @Html.ActionLink("Đăng ký tài khoản", "DangKy", "Auth", null, new { @class = "btn btn-outline-primary btn-lg btn-block" })
+                            </div>
+                        </div>
+
+                    }
                 </div>
             </div>
         </div>
+    </div>
 </div>
+<p style="color:red;text-align:center">@ViewBag.TB</p>
 
-<h5 style="color:red;text-align:center">@ViewBag.TB</h5>
-<script src="~/Content/assets/login/script.js"></script>
+<script>
+    function togglePassword() {
+        var passwordInput = document.getElementById('MatKhau');
+        var icon = document.getElementById('eyeIcon');
+        var text = document.getElementById('eyeText');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+            text.textContent = ' Ẩn mật khẩu';
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+            text.textContent = ' Hiện mật khẩu';
+        }
+    }
+</script>

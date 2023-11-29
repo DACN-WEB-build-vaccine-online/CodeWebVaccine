@@ -317,10 +317,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\styles\core.css" />
+    <Content Include="Content\styles\core.min.css" />
+    <Content Include="Content\styles\icon-font.css" />
+    <Content Include="Content\styles\icon-font.min.css" />
+    <Content Include="Content\styles\style.css" />
+    <Content Include="Content\styles\style.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\KhachHang\background.svg" />
     <Content Include="Images\KhachHang\css\bootstrap.min.css" />
     <Content Include="Images\KhachHang\css\elegant-icons.css" />
     <Content Include="Images\KhachHang\css\font-awesome.min.css" />
@@ -495,6 +502,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\TrangTinTuc.cshtml" />
     <Content Include="Views\Home\LiDoTiemVC.cshtml" />
+    <Content Include="Views\Sanpham\TimKiem.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Auth\DangKy.cshtml" />
+    <Content Include="Views\Shared\Lg_reg_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
