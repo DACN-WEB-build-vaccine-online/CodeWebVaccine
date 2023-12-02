@@ -58,6 +58,11 @@
                         </div>
                         <h7 style="color:red;text-align:left">@ViewData["Loi6"]</h7>
 
+                        <div class="input-group custom">
+                            @Html.TextBox("GioiTinhKH", "", new { @class = "form-control", type = "text", placeholder = "Giới tính", pattern = "Nam|Nữ" })
+                        </div>
+                        <h7 style="color:red;text-align:left">@ViewData["Loi7"]</h7>
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="input-group mb-0">

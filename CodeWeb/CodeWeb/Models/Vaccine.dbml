@@ -24,9 +24,21 @@
       <Column Name="MaLoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaNhom" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Vaccine_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaVC" OtherKey="MaVC" Type="ChiTietHoaDon" />
+      <Association Name="Vaccine_GioHang" Member="GioHangs" ThisKey="MaVC" OtherKey="MaVC" Type="GioHang" />
       <Association Name="Vaccine_LoVaccine" Member="LoVaccines" ThisKey="MaVC" OtherKey="MaVC" Type="LoVaccine" />
       <Association Name="LoaiVaccine_Vaccine" Member="LoaiVaccine" ThisKey="MaLoai" OtherKey="MaLoai" Type="LoaiVaccine" IsForeignKey="true" />
       <Association Name="NhomVaccine_Vaccine" Member="NhomVaccine" ThisKey="MaNhom" OtherKey="MaNhom" Type="NhomVaccine" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GioHang" Member="GioHangs">
+    <Type Name="GioHang">
+      <Column Name="MaKH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaVC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongThanhTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongSL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Vaccine_GioHang" Member="Vaccine" ThisKey="MaVC" OtherKey="MaVC" Type="Vaccine" IsForeignKey="true" />
+      <Association Name="KhachHang_GioHang" Member="KhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="KhachHang" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.HoaDon" Member="HoaDons">
@@ -50,8 +62,8 @@
       <Column Name="SoDienThoaiKH" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="EmailKH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DiaChiKH" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="HinhAnhKH" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="TenTK" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="KhachHang_GioHang" Member="GioHangs" ThisKey="MaKH" OtherKey="MaKH" Type="GioHang" />
       <Association Name="KhachHang_NguoiTiemChung" Member="NguoiTiemChungs" ThisKey="MaKH" OtherKey="MaKH" Type="NguoiTiemChung" />
       <Association Name="TaiKhoan_KhachHang" Member="TaiKhoan" ThisKey="TenTK" OtherKey="TenTK" Type="TaiKhoan" IsForeignKey="true" />
     </Type>

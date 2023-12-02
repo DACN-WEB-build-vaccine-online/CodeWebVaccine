@@ -5,18 +5,39 @@
 }
 
 <style>
+    a {
+        color: #1977cc;
+    }
+
+        a:hover {
+            color: #6c757d;
+        }
+
     .card {
         position: relative;
         overflow: hidden;
+        height: 100%; /* Set a fixed height for the card */
     }
 
         .card img {
             width: 100%;
             height: auto;
-            max-width: 100%; /* Đặt tối đa chiều rộng */
-            display: block; /* Loại bỏ khoảng trắng dưới hình ảnh */
-            margin: 0 auto; /* Căn giữa hình ảnh trong thẻ card */
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
         }
+
+    .phong {
+        /* Add padding, border, and box-shadow for styling */
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product__item__text {
+        padding-top: 10px;
+    }
 </style>
 <div class="container mt-4">
     <h2>Kết Quả Tìm Kiếm</h2>
@@ -27,13 +48,13 @@
             {
                 <div class="col-md-4 mb-4">
                     <div class="card phong p-3">
-                        <a href="@Url.Action("CTPhong", "Datphong", new { ma = pv.MaVC })">
+                        <a href="@Url.Action("Details", "Sanpham", new {  @id = pv.MaVC })">
                             <img src="~/images/Vaccine/@Html.Raw(pv.HinhAnhVC)" />
                         </a>
                         <span style="margin-top:10px;"><b>@pv.TenVC</b></span><br />
-                        <label>Loại Phòng: @(pv.LoaiVaccine != null ? pv.LoaiVaccine.TenLoai : "Không có")</label><br />
-                        <span class="gia-thue">Số người ở: @pv.SoLuongVC Người </span><br />
-                        <span>Trạng thái: @pv.TinhTrangVC</span><br />
+                        <label>Loại Vaccine: @(pv.LoaiVaccine != null ? pv.LoaiVaccine.TenLoai : "Không có")</label><br />
+                        <span class="gia-thue">Số lượng: @pv.SoLuongVC </span><br />
+                        <span>Tình trạng: @pv.TinhTrangVC</span><br />
                         <span>Giá: @String.Format("{0:0,0 VNĐ}", pv.GiaBanVC)</span><br />
 
                     </div>

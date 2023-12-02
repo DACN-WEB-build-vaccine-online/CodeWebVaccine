@@ -23,9 +23,34 @@
     }
 
         a:hover {
-            color: #6c757d
+            color: #6c757d;
         }
 
+    .card {
+        position: relative;
+        overflow: hidden;
+        height: 100%; /* Set a fixed height for the card */
+    }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+    .phong {
+        /* Add padding, border, and box-shadow for styling */
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product__item__text {
+        padding-top: 10px;
+    }
 </style>
 <!-- Shop Section Begin -->
 @Html.ActionLink("Trang chủ", "Index", "Home")
@@ -83,20 +108,20 @@
                 <div class="row">
                     @foreach (var p in Model)
                     {
-                        <div class="col-lg-4">
-                            <div class="product__item">
-                                <div class="">
-                                    <a href="@Url.Action("Details", "Sanpham", new { @id = p.MaVC }, null)">
-                                        <img style="max-block-size: 160px; margin-bottom: 10px;" src="~/images/Vaccine/@Html.Raw(p.HinhAnhVC)" alt="...">
-                                    </a>
-                                </div>
-                                <div class="product__item__text" style="padding-top: 10px;">
-                                    <h6>@p.TenVC</h6>
-                                    <a href="@Url.Action("ThemGioHang", "Cart", new { idAo = p.MaVC, strURL = Request.Url.ToString() })" class="add-cart">+ Thêm vào giỏ hàng</a>
-                                    <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBanVC)</h5>
-                                </div>
+                        <div class="col-md-4 mb-4">
+                        <div class="card phong p-3">
+                            <div class="">
+                                <a href="@Url.Action("Details", "Sanpham", new { @id = p.MaVC }, null)">
+                                    <img style="max-block-size: 160px; margin-bottom: 10px;" src="~/images/Vaccine/@Html.Raw(p.HinhAnhVC)" alt="...">
+                                </a>
+                            </div>
+                            <div class="product__item__text" style="padding-top: 10px;">
+                                <h6>@p.TenVC</h6>
+                                <a href="@Url.Action("ThemGioHang", "Cart", new { idAo = p.MaVC, strURL = Request.Url.ToString() })" class="add-cart">+ Thêm vào giỏ hàng</a>
+                                <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBanVC)</h5>
                             </div>
                         </div>
+                         </div>
 
                     }
                 </div>

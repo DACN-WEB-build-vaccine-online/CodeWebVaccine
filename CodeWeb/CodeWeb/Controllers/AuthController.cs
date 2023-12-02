@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -48,6 +49,7 @@ namespace CodeWeb.Controllers
             var ngaysinh = f["Ngaysinh"];
             var diachi = f["diachi"];
             var email = f["email"];
+            var giotinh = f["GioiTinhKH"];
 
             if (string.IsNullOrEmpty(hoten) ||
                 string.IsNullOrEmpty(tendn) ||
@@ -59,6 +61,11 @@ namespace CodeWeb.Controllers
                 string.IsNullOrEmpty(diachi))
             {
                 ViewData["Loi"] = "Vui lòng điền đầy đủ thông tin!";
+                return View();
+            }
+            if (string.IsNullOrEmpty(kh.GioiTinhKH) || !Regex.IsMatch(kh.GioiTinhKH, "^(Nam|Nữ)$", RegexOptions.IgnoreCase))
+            {
+                ViewData["Loi7"] = "Vui lòng điền giới tính hợp lệ!";
                 return View();
             }
 
@@ -100,10 +107,20 @@ namespace CodeWeb.Controllers
             // Gắn mã tài khoản vào bảng KHACHHANG
             kh.TenTK = ac.TenTK; // Giả sử là khóa chính của TAIKHOAN
             kh.HoTenKH = hoten;
-            kh.SoDienThoaiKH = dienthoai;
+            if (giotinh == null)
+            {
+                kh.GioiTinhKH = "Không xác định";
+            }
+            else
+            {
+                kh.GioiTinhKH = giotinh;
+            }
+
             kh.NgaySinhKH = DateTime.Parse(ngaysinh);
+            kh.SoDienThoaiKH = dienthoai;
             kh.DiaChiKH = diachi;
             kh.EmailKH = email;
+            
 
             db.KhachHangs.InsertOnSubmit(kh);
             db.SubmitChanges();
@@ -120,7 +137,7 @@ namespace CodeWeb.Controllers
         [HttpPost]
         public ActionResult DangNhap(FormCollection f)
         {
-            //khai bao cac bien nhan gia tri tu form f
+            // Khai báo các biến nhận giá trị từ form f
             var tendn = f["TenDN"];
             var matkhau = f["MatKhau"];
 
@@ -135,33 +152,44 @@ namespace CodeWeb.Controllers
 
             if (!string.IsNullOrEmpty(tendn) && !string.IsNullOrEmpty(matkhau))
             {
-                TaiKhoan ac = db.TaiKhoans.SingleOrDefault(t => t.TenTK == tendn && t.MatKhau == matkhau);
-                KhachHang kh = db.KhachHangs.SingleOrDefault(t => t.TenTK == tendn);
-                NhanVien nv = db.NhanViens.SingleOrDefault(t => t.TenTK == tendn);
+                TaiKhoan ac = db.TaiKhoans.SingleOrDefault(t => t.TenTK == tendn);
+
                 if (ac != null)
                 {
-                    if (nv != null && ac.TenTK == nv.TenTK)
-                    {
-                        ViewBag.TB = "Đăng nhập thành công!";
-                        Session["NV"] = nv;
-                        return RedirectToAction("DangNhap", "Admin");
-                    }
+                    // Mã hóa mật khẩu nhập vào và so sánh với mật khẩu đã lưu trong cơ sở dữ liệu
+                    string hashedPasswordInput = HashPassword(matkhau);
 
-                    if (kh != null && ac.TenTK == kh.TenTK)
+                    if (hashedPasswordInput == ac.MatKhau)
                     {
-                        ViewBag.TB = "Đăng nhập thành công!";
-                        Session["KH"] = kh;
+                        KhachHang kh = db.KhachHangs.SingleOrDefault(t => t.TenTK == tendn);
+                        NhanVien nv = db.NhanViens.SingleOrDefault(t => t.TenTK == tendn);
+
+                        if (nv != null && ac.TenTK == nv.TenTK)
+                        {
+                            ViewBag.TB = "Đăng nhập thành công!";
+                            Session["NV"] = nv;
+                            return RedirectToAction("DangNhap", "Admin");
+                        }
+
+                        if (kh != null && ac.TenTK == kh.TenTK)
+                        {
+                            ViewBag.TB = "Đăng nhập thành công!";
+                            Session["KH"] = kh;
+                            return RedirectToAction("Index", "Home");
+                        }
+
                         return RedirectToAction("Index", "Home");
                     }
-                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewData["Loi1"] = "Tên đăng nhập hoặc mật khẩu sai vui lòng nhập lại!";
+                    ViewData["Loi1"] = "Tên đăng nhập hoặc mật khẩu sai, vui lòng nhập lại!";
                 }
             }
+
             return View();
         }
-        
+
+
     }
 }

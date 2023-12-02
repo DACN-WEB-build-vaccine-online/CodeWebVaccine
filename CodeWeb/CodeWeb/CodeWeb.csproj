@@ -365,6 +365,7 @@
     <Content Include="Images\KhachHang\js\mixitup.min.js" />
     <Content Include="Images\KhachHang\js\owl.carousel.min.js" />
     <Content Include="Images\Logo\logovc.svg" />
+    <Content Include="Images\Vaccine\GoiVaccine.png" />
     <Content Include="Images\Vaccine\HUYẾT THANH UỐN VÁN %28SAT%29.jpg" />
     <Content Include="Images\Vaccine\VẮC XIN 5 TRONG 1 PENTAXIM %285IN1%29.jpg" />
     <Content Include="Images\Vaccine\VẮC XIN 6 TRONG 1 HEXAXIM %286IN1%29.jpg" />
@@ -490,7 +491,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DangKyTiem.cshtml" />
     <Content Include="Views\Shared\MainView.cshtml" />

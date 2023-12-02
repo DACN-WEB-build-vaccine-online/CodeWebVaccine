@@ -1,181 +1,201 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 15.125" name="Vaccine">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 16" name="Vaccine">
   <DataContextMoniker Name="/VaccineDataContext" />
   <nestedChildShapes>
-    <classShape Id="5f8a5da2-d623-425b-b4c0-a1df8105bf07" absoluteBounds="9, 3.5, 2, 1.5785953776041666">
+    <classShape Id="fddf9570-353a-4e98-811c-4c246a8d695a" absoluteBounds="9, 5.125, 2, 1.5785953776041666">
       <DataClassMoniker Name="/VaccineDataContext/ChiTietHoaDon" />
       <nestedChildShapes>
-        <elementListCompartment Id="b2c6d5b1-b46b-4929-b536-5e5d39ae2b01" absoluteBounds="9.015, 3.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0b436c69-7b74-4e91-af05-23c8c4692a4f" absoluteBounds="9.015, 5.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="388a7805-fa11-4e81-8dc1-197fc3376ee6" absoluteBounds="6.25, 2.75, 2, 2.9247054036458326">
+    <classShape Id="bcbeb726-20a4-4d04-ac09-afc4995fdeaa" absoluteBounds="6.25, 4.5, 2, 2.9247054036458326">
       <DataClassMoniker Name="/VaccineDataContext/Vaccine" />
       <nestedChildShapes>
-        <elementListCompartment Id="659fbd62-c297-4e7f-b6ca-356636a15eae" absoluteBounds="6.265, 3.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="92ee663b-09d0-44b2-9dc0-334dd1aead19" absoluteBounds="6.265, 4.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f755c6bf-50f8-4763-8971-4c18214a0e87" absoluteBounds="6.25, 9.25, 2, 1.9631982421874987">
+    <classShape Id="9590d920-5086-4d6e-8ecb-a4bcd466db0c" absoluteBounds="9, 2, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/VaccineDataContext/GioHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0334f5bf-c2e2-4b56-b6c6-128325eeea90" absoluteBounds="9.015, 2.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99b30bd5-ca24-4d23-bf2d-07b6e024f519" absoluteBounds="6.25, 9, 2, 1.9631982421874987">
       <DataClassMoniker Name="/VaccineDataContext/HoaDon" />
       <nestedChildShapes>
-        <elementListCompartment Id="929165ec-6ec5-494f-98af-9481b17ae0d5" absoluteBounds="6.265, 9.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d2fdfd6a-7d6f-48af-8682-716bf044a209" absoluteBounds="6.265, 9.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="620ae9f3-a3f0-4a3f-9676-93b64dba5dc2" absoluteBounds="0.75, 10, 2, 2.5401025390624987">
+    <classShape Id="0ba384ef-dc98-44e5-9b0f-0804b76722f0" absoluteBounds="6.25, 0.75, 2, 2.3478011067708335">
       <DataClassMoniker Name="/VaccineDataContext/KhachHang" />
       <nestedChildShapes>
-        <elementListCompartment Id="2006a2c0-cf12-462e-8eef-bd7055825f3b" absoluteBounds="0.765, 10.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="bfb1d4b1-b188-4965-ac57-d3cf756656bd" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="14f1a100-0f7a-4a85-95c6-0782a49a5eca" absoluteBounds="0.75, 3.625, 2, 1.1939925130208331">
+    <classShape Id="31c4d117-0323-41e8-9c47-00995d236a12" absoluteBounds="0.75, 5.375, 2, 1.1939925130208344">
       <DataClassMoniker Name="/VaccineDataContext/LoaiVaccine" />
       <nestedChildShapes>
-        <elementListCompartment Id="e5665cff-3ff7-4882-be0a-ca838bdf61e1" absoluteBounds="0.765, 4.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="80ea181f-6dcf-4e78-99c9-42470feb7d9b" absoluteBounds="0.765, 5.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="473674e4-7ffd-4578-ae98-5ec2afb0f6a8" absoluteBounds="9, 5.75, 2, 1.5785953776041666">
+    <classShape Id="e4ef23ce-f2fd-4a8a-8970-9aa3957fbc9e" absoluteBounds="9, 7.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/VaccineDataContext/LoVaccine" />
       <nestedChildShapes>
-        <elementListCompartment Id="dc469b61-0576-40ad-abb6-787eab65c5a6" absoluteBounds="9.015, 6.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b27c3747-4e8f-485b-b67b-76a3571de45b" absoluteBounds="9.015, 7.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1030445e-fe25-431a-9b40-d173a34768dc" absoluteBounds="0.75, 8, 2, 1.1939925130208344">
+    <classShape Id="eeb6491d-c1b7-44a4-9a03-209003c1691a" absoluteBounds="0.75, 9.375, 2, 1.1939925130208344">
       <DataClassMoniker Name="/VaccineDataContext/MoiQuanHe" />
       <nestedChildShapes>
-        <elementListCompartment Id="f9fab4c2-2515-4d50-98e7-7b527287a96e" absoluteBounds="0.765, 8.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ac3df344-cdd9-4582-b1f6-7cb82b0d8201" absoluteBounds="0.765, 9.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2e5d28e7-4b7f-4681-a952-80268d668509" absoluteBounds="3.5, 9.125, 2, 2.3478011067708344">
+    <classShape Id="6251a210-9266-4059-95cd-e35a8b91b09b" absoluteBounds="3.5, 8.75, 2, 2.3478011067708344">
       <DataClassMoniker Name="/VaccineDataContext/NguoiTiemChung" />
       <nestedChildShapes>
-        <elementListCompartment Id="c1daab10-d24b-4a92-b830-193e55ff629d" absoluteBounds="3.515, 9.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="971b91eb-c37b-4d4b-9cde-5c989971bfdc" absoluteBounds="3.515, 9.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="63850434-c5f2-4b5e-8b45-7e1bf134d441" absoluteBounds="9, 1, 2, 1.5785953776041666">
+    <classShape Id="f0d559d9-3212-4b2a-ab80-28a81cab0d19" absoluteBounds="9, 10.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/VaccineDataContext/NhaCC" />
       <nestedChildShapes>
-        <elementListCompartment Id="e61db9d7-89c8-4ae3-96e6-203c1189f0cc" absoluteBounds="9.015, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a8a68672-71ee-4fe8-a04d-6d2f632f1c11" absoluteBounds="9.015, 11.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e9349f95-02a5-4e34-8424-f655326ce687" absoluteBounds="9, 8.375, 2, 2.7324039713541666">
+    <classShape Id="ea6e0b33-6565-4dba-ae80-dcb34dcb24ae" absoluteBounds="9, 13, 2, 2.7324039713541666">
       <DataClassMoniker Name="/VaccineDataContext/NhanVien" />
       <nestedChildShapes>
-        <elementListCompartment Id="dd025f1c-f9ab-4324-b58d-190d3f87a856" absoluteBounds="9.015, 8.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0245d5dc-f1e3-4020-9fbf-0ecce3b47632" absoluteBounds="9.015, 13.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d2bc46cc-f9c2-4052-845c-944ff39baf61" absoluteBounds="11.75, 5.75, 2, 1.7708968098958327">
+    <classShape Id="60c35986-0256-4bfc-93b2-258b6d1f7f87" absoluteBounds="11.75, 7.375, 2, 1.7708968098958344">
       <DataClassMoniker Name="/VaccineDataContext/NhapKho" />
       <nestedChildShapes>
-        <elementListCompartment Id="66b709f4-16cb-4aa2-ad35-b5a4e3935f39" absoluteBounds="11.765, 6.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="14d4f03a-a792-4ae7-85cb-b2f1e00974bd" absoluteBounds="11.765, 7.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="92f2b241-c447-4d22-8f7c-13a2590b085c" absoluteBounds="3.5, 3.5, 2, 1.3862939453125005">
+    <classShape Id="88f2d6d6-7107-4ef3-aaaa-b65039c34c5a" absoluteBounds="3.5, 5.25, 2, 1.3862939453125005">
       <DataClassMoniker Name="/VaccineDataContext/NhomVaccine" />
       <nestedChildShapes>
-        <elementListCompartment Id="f740e7b4-8e6c-4fa6-b7e7-d5ecd0ca184b" absoluteBounds="3.515, 3.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c6b2810e-84ca-44c2-84d1-4a86c6589192" absoluteBounds="3.515, 5.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1568d67b-e2b3-47ec-abe5-2dcf955dcfd5" absoluteBounds="1.5, 13.625, 2, 1.1939925130208344">
+    <classShape Id="23a29e0e-e0ab-48ba-8a13-bdea4978adb8" absoluteBounds="3.5, 1.375, 2, 1.1939925130208335">
       <DataClassMoniker Name="/VaccineDataContext/TaiKhoan" />
       <nestedChildShapes>
-        <elementListCompartment Id="3ddb9a00-e769-46ab-b581-47959b96d513" absoluteBounds="1.5150000000000001, 14.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8f892532-fbc9-4a37-9b87-ff01b74c22b1" absoluteBounds="3.515, 1.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 4.28929768880208); (9 : 4.28929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 5.91429768880208); (9 : 5.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/Vaccine/Vaccine_ChiTietHoaDon" />
       <nodes>
-        <classShapeMoniker Id="388a7805-fa11-4e81-8dc1-197fc3376ee6" />
-        <classShapeMoniker Id="5f8a5da2-d623-425b-b4c0-a1df8105bf07" />
+        <classShapeMoniker Id="bcbeb726-20a4-4d04-ac09-afc4995fdeaa" />
+        <classShapeMoniker Id="fddf9570-353a-4e98-811c-4c246a8d695a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 9.25); (8.625 : 8.875); (8.625 : 4.71519853320313); (9 : 4.71519853320313)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 4.5); (8.625 : 4.125); (8.625 : 2.88544840494792); (9 : 2.88544840494792)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/VaccineDataContext/Vaccine/Vaccine_GioHang" />
+      <nodes>
+        <classShapeMoniker Id="bcbeb726-20a4-4d04-ac09-afc4995fdeaa" />
+        <classShapeMoniker Id="9590d920-5086-4d6e-8ecb-a4bcd466db0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 9); (8.625 : 8.625); (8.625 : 6.34019853320313); (9 : 6.34019853320313)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/HoaDon/HoaDon_ChiTietHoaDon" />
       <nodes>
-        <classShapeMoniker Id="f755c6bf-50f8-4763-8971-4c18214a0e87" />
-        <classShapeMoniker Id="5f8a5da2-d623-425b-b4c0-a1df8105bf07" />
+        <classShapeMoniker Id="99b30bd5-ca24-4d23-bf2d-07b6e024f519" />
+        <classShapeMoniker Id="fddf9570-353a-4e98-811c-4c246a8d695a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 4.81899251302083); (1.75 : 5.31174967447917); (6.25 : 5.31174967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 2.38022420247396); (9 : 2.38022420247396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/VaccineDataContext/KhachHang/KhachHang_GioHang" />
+      <nodes>
+        <classShapeMoniker Id="0ba384ef-dc98-44e5-9b0f-0804b76722f0" />
+        <classShapeMoniker Id="9590d920-5086-4d6e-8ecb-a4bcd466db0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 6.56899251302083); (1.75 : 7.06174967447917); (5.79166666666667 : 7.06174967447917 : JumpStart); (6.11458333333333 : 7.06174967447917 : JumpEnd); (6.25 : 7.06174967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/LoaiVaccine/LoaiVaccine_Vaccine" />
       <nodes>
-        <classShapeMoniker Id="14f1a100-0f7a-4a85-95c6-0782a49a5eca" />
-        <classShapeMoniker Id="388a7805-fa11-4e81-8dc1-197fc3376ee6" />
+        <classShapeMoniker Id="31c4d117-0323-41e8-9c47-00995d236a12" />
+        <classShapeMoniker Id="bcbeb726-20a4-4d04-ac09-afc4995fdeaa" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.25 : 5.67470540364583); (7.25 : 6.53929768880208); (8.54166666666667 : 6.53929768880208 : JumpStart); (8.70833333333333 : 6.53929768880208 : JumpEnd); (9 : 6.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 7.36316594210737); (8.56607443490112 : 7.67924037700849 : JumpStart); (8.68392556509888 : 7.79709150720625 : JumpEnd); (8.8125 : 7.92566594210737); (8.8125 : 7.3125); (9 : 7.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/VaccineDataContext/Vaccine/Vaccine_LoVaccine" />
       <nodes>
-        <classShapeMoniker Id="388a7805-fa11-4e81-8dc1-197fc3376ee6" />
-        <classShapeMoniker Id="473674e4-7ffd-4578-ae98-5ec2afb0f6a8" />
+        <classShapeMoniker Id="bcbeb726-20a4-4d04-ac09-afc4995fdeaa" />
+        <classShapeMoniker Id="e4ef23ce-f2fd-4a8a-8970-9aa3957fbc9e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 10.2315991210937); (6.25 : 10.2315991210937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 9.98159912109375); (5.94791666666667 : 9.98159912109375 : JumpStart); (6.11458333333333 : 9.98159912109375 : JumpEnd); (6.25 : 9.98159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/NguoiTiemChung/NguoiTiemChung_HoaDon" />
       <nodes>
-        <classShapeMoniker Id="2e5d28e7-4b7f-4681-a952-80268d668509" />
-        <classShapeMoniker Id="f755c6bf-50f8-4763-8971-4c18214a0e87" />
+        <classShapeMoniker Id="6251a210-9266-4059-95cd-e35a8b91b09b" />
+        <classShapeMoniker Id="99b30bd5-ca24-4d23-bf2d-07b6e024f519" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.7364005533854); (3.5 : 10.7364005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.25 : 3.09780110677083); (6.09017556509888 : 3.25762554167195 : JumpStart); (5.97232443490112 : 3.37547667186971 : JumpEnd); (5.875 : 3.47280110677083); (5.875 : 9.33454756054687); (5.5 : 9.33454756054687)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/KhachHang/KhachHang_NguoiTiemChung" />
       <nodes>
-        <classShapeMoniker Id="620ae9f3-a3f0-4a3f-9676-93b64dba5dc2" />
-        <classShapeMoniker Id="2e5d28e7-4b7f-4681-a952-80268d668509" />
+        <classShapeMoniker Id="0ba384ef-dc98-44e5-9b0f-0804b76722f0" />
+        <classShapeMoniker Id="6251a210-9266-4059-95cd-e35a8b91b09b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 8.5624995); (4.5 : 8.5624995); (4.5 : 9.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 9.97199625651042); (3.5 : 9.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/MoiQuanHe/MoiQuanHe_NguoiTiemChung" />
       <nodes>
-        <classShapeMoniker Id="1030445e-fe25-431a-9b40-d173a34768dc" />
-        <classShapeMoniker Id="2e5d28e7-4b7f-4681-a952-80268d668509" />
+        <classShapeMoniker Id="eeb6491d-c1b7-44a4-9a03-209003c1691a" />
+        <classShapeMoniker Id="6251a210-9266-4059-95cd-e35a8b91b09b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11 : 6.53929768880208); (11.75 : 6.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11 : 8.28929768880208); (11.75 : 8.28929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/LoVaccine/LoVaccine_NhapKho" />
       <nodes>
-        <classShapeMoniker Id="473674e4-7ffd-4578-ae98-5ec2afb0f6a8" />
-        <classShapeMoniker Id="d2bc46cc-f9c2-4052-845c-944ff39baf61" />
+        <classShapeMoniker Id="e4ef23ce-f2fd-4a8a-8970-9aa3957fbc9e" />
+        <classShapeMoniker Id="60c35986-0256-4bfc-93b2-258b6d1f7f87" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11 : 1.78929768880208); (12.75 : 1.78929768880208); (12.75 : 5.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11 : 11.5392976888021); (12.1354141666667 : 11.5392976888021 : JumpStart); (12.3020808333333 : 11.5392976888021 : JumpEnd); (12.75 : 11.5392976888021); (12.75 : 9.14589680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/NhaCC/NhaCC_NhapKho" />
       <nodes>
-        <classShapeMoniker Id="63850434-c5f2-4b5e-8b45-7e1bf134d441" />
-        <classShapeMoniker Id="d2bc46cc-f9c2-4052-845c-944ff39baf61" />
+        <classShapeMoniker Id="f0d559d9-3212-4b2a-ab80-28a81cab0d19" />
+        <classShapeMoniker Id="60c35986-0256-4bfc-93b2-258b6d1f7f87" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11 : 9.74120198567708); (12.75 : 9.74120198567708); (12.75 : 7.52089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11 : 14.3662019856771); (12.2187475 : 14.3662019856771); (12.2187475 : 9.14589680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/NhanVien/NhanVien_NhapKho" />
       <nodes>
-        <classShapeMoniker Id="e9349f95-02a5-4e34-8424-f655326ce687" />
-        <classShapeMoniker Id="d2bc46cc-f9c2-4052-845c-944ff39baf61" />
+        <classShapeMoniker Id="ea6e0b33-6565-4dba-ae80-dcb34dcb24ae" />
+        <classShapeMoniker Id="60c35986-0256-4bfc-93b2-258b6d1f7f87" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.19314697265625); (6.25 : 4.19314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 5.94314697265625); (5.79166666666667 : 5.94314697265625 : JumpStart); (6.11458333333333 : 5.94314697265625 : JumpEnd); (6.25 : 5.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/NhomVaccine/NhomVaccine_Vaccine" />
       <nodes>
-        <classShapeMoniker Id="92f2b241-c447-4d22-8f7c-13a2590b085c" />
-        <classShapeMoniker Id="388a7805-fa11-4e81-8dc1-197fc3376ee6" />
+        <classShapeMoniker Id="88f2d6d6-7107-4ef3-aaaa-b65039c34c5a" />
+        <classShapeMoniker Id="bcbeb726-20a4-4d04-ac09-afc4995fdeaa" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.22199625651042); (3.5 : 4.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.97199625651042); (3.5 : 5.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/LoaiVaccine/LoaiVaccine_NhomVaccine" />
       <nodes>
-        <classShapeMoniker Id="14f1a100-0f7a-4a85-95c6-0782a49a5eca" />
-        <classShapeMoniker Id="92f2b241-c447-4d22-8f7c-13a2590b085c" />
+        <classShapeMoniker Id="31c4d117-0323-41e8-9c47-00995d236a12" />
+        <classShapeMoniker Id="88f2d6d6-7107-4ef3-aaaa-b65039c34c5a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.125 : 13.625); (2.125 : 12.5401025390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 1.97199625651042); (6.25 : 1.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/TaiKhoan/TaiKhoan_KhachHang" />
       <nodes>
-        <classShapeMoniker Id="1568d67b-e2b3-47ec-abe5-2dcf955dcfd5" />
-        <classShapeMoniker Id="620ae9f3-a3f0-4a3f-9676-93b64dba5dc2" />
+        <classShapeMoniker Id="23a29e0e-e0ab-48ba-8a13-bdea4978adb8" />
+        <classShapeMoniker Id="0ba384ef-dc98-44e5-9b0f-0804b76722f0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.5 : 14.2219962565104); (10 : 14.2219962565104); (10 : 11.1074039713542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 2.5368455607472); (6.03125 : 3.0680955607472); (6.03125 : 14.3662019856771); (9 : 14.3662019856771)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/VaccineDataContext/TaiKhoan/TaiKhoan_NhanVien" />
       <nodes>
-        <classShapeMoniker Id="1568d67b-e2b3-47ec-abe5-2dcf955dcfd5" />
-        <classShapeMoniker Id="e9349f95-02a5-4e34-8424-f655326ce687" />
+        <classShapeMoniker Id="23a29e0e-e0ab-48ba-8a13-bdea4978adb8" />
+        <classShapeMoniker Id="ea6e0b33-6565-4dba-ae80-dcb34dcb24ae" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
