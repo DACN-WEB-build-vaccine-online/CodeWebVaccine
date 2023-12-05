@@ -122,6 +122,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanphamController.cs" />
     <Compile Include="Global.asax.cs">
@@ -317,6 +318,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Cart\style.css" />
     <Content Include="Content\styles\core.css" />
     <Content Include="Content\styles\core.min.css" />
     <Content Include="Content\styles\icon-font.css" />
@@ -500,12 +502,13 @@
     <Content Include="Views\Sanpham\Details.cshtml" />
     <Content Include="Views\Auth\DangNhap.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\TrangTinTuc.cshtml" />
     <Content Include="Views\Home\LiDoTiemVC.cshtml" />
     <Content Include="Views\Sanpham\TimKiem.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
     <Content Include="Views\Auth\DangKy.cshtml" />
     <Content Include="Views\Shared\Lg_reg_Layout.cshtml" />
+    <Content Include="Views\Cart\GioHang.cshtml" />
+    <Content Include="Views\Cart\GioHangPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

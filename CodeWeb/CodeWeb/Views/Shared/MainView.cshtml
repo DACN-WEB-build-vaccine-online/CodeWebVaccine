@@ -55,17 +55,18 @@
                     <li><a class="nav-link scrollto" href="@Url.Action("DangKyTiem","Home")"><span>Đăng ký tiêm</span></a></li>
                     <li><a class="nav-link scrollto" href="@Url.Action("ShowVaccine","Sanpham")">Danh sách Vaccine</a></li>
                     <li><a class="nav-link scrollto" href="@Url.Action("Contact","Home")">Liên hệ</a></li>
-                    <li><a class="nav-link scrollto" href="@Url.Action("TrangTinTuc","Home")">Tin tức</a></li>
+                    <li><a class="nav-link scrollto" href="@Url.Action("LiDoTiemVC","Home")">Tin tức</a></li>
                     <li>
                         @Html.Partial("_Search")
                     </li>
-                    <li class="user-dropdown">
+                    <li class="user-dropdown nav-link scrollto">
                         @if (kh != null)
                         {
                             <div class="user-profile">
                                 <img src="~/images/KhachHang/img/icon/user.svg" width="21" height="21" alt="">
                                 <div class="user-details">
                                     <span class="username">@kh.HoTenKH</span>
+                                    <span class="user"> <a href="@Url.Action("DanhSachDonHang", "Cart", new { idKH=kh.MaKH })">Danh Sách Đơn Hàng</a></span>
                                     <span class="logout"><a href="@Url.Action("DangXuat", "Home")">Đăng Xuất</a></span>
                                 </div>
                             </div>
@@ -77,6 +78,15 @@
                                     <img src="~/images/KhachHang/img/icon/user.svg" width="21" height="21" alt="">
                                 </a>
                             </div>
+                        }
+                    </li>
+                    <li>
+                        @if (kh == null)
+                        {
+                            <a href="/Auth/DangNhap"><img src="~/Images/KhachHang/img/icon/shop_.svg" width="23" height="23" alt=""></a>}
+                        @if (kh != null)
+                        {
+                            @Html.Action("GioHangPartial", "Cart")
                         }
                     </li>
 
@@ -168,7 +178,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Template Main JS File -->
     <script src="~/Content/assets/js/main.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
