@@ -68,13 +68,13 @@ namespace CodeWeb.Controllers
 
             return 0;
         }
-        private double TongThanhTien()
+        private int TongThanhTien()
         {
-            double ttt = 0;
+            int ttt = 0;
             List<GioHang> lstGioHang = Session["GioHang"] as List<GioHang>;
             if (lstGioHang != null)
             {
-                ttt += lstGioHang.Sum(t => (double)t.TongThanhTien);
+                ttt += lstGioHang.Sum(t => (int)t.TongThanhTien);
             }
             return ttt;
         }
@@ -163,6 +163,7 @@ namespace CodeWeb.Controllers
         {
             string addressDetails = fc["address"];
             string name, phone;
+
             name = fc["name"];
             phone = fc["phone"];
             if (string.IsNullOrEmpty(addressDetails) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(phone) || !(new Regex(@"^([0-9]{10,11})$").IsMatch(phone)))
@@ -171,64 +172,54 @@ namespace CodeWeb.Controllers
                 return View();
             }
             List<GioHang> GHs = Session["PayList"] as List<GioHang>;
+            var mqh = db.MoiQuanHes.ToList();
+
+
             int idBill = 0;
             int idKH = GHs.FirstOrDefault().MaKH;
-            //foreach (var item in GHs)
-            //{
-            //    if (idBill == 0)
-            //    {
-            //        try
-            //        {
 
-            //            DateTime date = DateTime.Now;
-            //            DONHANG Donhang = new DONHANG();
-            //            Donhang.NGAYMUA = date;
-            //            Donhang.THANHTIEN = 0;
-            //            Donhang.MAKH = idKH;
-            //            Donhang.MALDH = 1;
-            //            Donhang.TRANGTHAI = "Chưa Thanh Toán";
+            foreach (var item in GHs)
+            {
+                if (idBill == 0)
+                {
+                    try
+                    {
+                        HoaDon Donhang = new HoaDon();
+                        Donhang.NgayLap = DateTime.Now;
+                        //Donhang.ThoiGianTiem = date;
+                        Donhang.MaNTC = idKH;
+                        Donhang.TongTien = (int)TongThanhTien();
 
-            //            db.DONHANGs.InsertOnSubmit(Donhang);
-            //            db.SubmitChanges();
-            //            idBill = db.DONHANGs.Max(x => x.MADH);
+                        db.HoaDons.InsertOnSubmit(Donhang);
+                        db.SubmitChanges();
 
-            //            GIAOHANG giaohang = new GIAOHANG();
-            //            giaohang.MADH = idBill;
-            //            giaohang.NGUOINHAN = name;
-            //            giaohang.SDTNGUOINHAN = phone;
-            //            giaohang.DIACHIGIAOHANG = addressDetails;
-            //            giaohang.XACNHANDH = "Chưa Xác Nhận";
-            //            giaohang.TTGIAOHANG = "Chờ Xác Nhận";
-            //            DateTime datetime = DateTime.Now;
-            //            giaohang.THOIGIANDATHANG = datetime;
-            //            db.GIAOHANGs.InsertOnSubmit(giaohang);
-            //            db.SubmitChanges();
-
-            //        }
-            //        catch
-            //        {
-            //            idBill = 0;
-            //        }
-            //    }
-            //    if (idBill > 0)
-            //    {
-            //        try
-            //        {
-            //            CHITIETDH ct = new CHITIETDH();
-            //            ct.MADH = idBill;
-            //            ct.MASACH = item.MASACH;
-            //            ct.SOLUONG = item.SOLUONG;
-            //            db.CHITIETDHs.InsertOnSubmit(ct);
-            //            db.SubmitChanges();
-            //            db.GIOHANGs.DeleteOnSubmit(db.GIOHANGs.SingleOrDefault(x => x.MASACH == item.MASACH && item.MAKH == idKH));
-            //            db.SubmitChanges();
-            //        }
-            //        catch
-            //        {
-            //            idBill = 0;
-            //        }
-            //    }
-            //}
+                    }
+                    catch
+                    {
+                        idBill = 0;
+                    }
+                }
+                //    if (idBill > 0)
+                //    {
+                //        try
+                //        {
+                //            CHITIETDH ct = new CHITIETDH();
+                //            ct.MADH = idBill;
+                //            ct.MASACH = item.MASACH;
+                //            ct.SOLUONG = item.SOLUONG;
+                //            db.CHITIETDHs.InsertOnSubmit(ct);
+                //            db.SubmitChanges();
+                //            db.GIOHANGs.DeleteOnSubmit(db.GIOHANGs.SingleOrDefault(x => x.MASACH == item.MASACH && item.MAKH == idKH));
+                //            db.SubmitChanges();
+                //        }
+                //        catch
+                //        {
+                //            idBill = 0;
+                //        }
+                //    }
+                
+               
+            }
             return RedirectToAction("Index", "Home");
         }
 
