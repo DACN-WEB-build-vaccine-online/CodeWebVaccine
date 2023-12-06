@@ -509,6 +509,7 @@
     <Content Include="Views\Shared\Lg_reg_Layout.cshtml" />
     <Content Include="Views\Cart\GioHang.cshtml" />
     <Content Include="Views\Cart\GioHangPartial.cshtml" />
+    <Content Include="Views\Cart\DangkyTiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
 namespace CodeWeb.Controllers
 {
+    [HandleError]
     public class CartController : Controller
     {
         VaccineDataContext db = new VaccineDataContext();
@@ -151,19 +153,99 @@ namespace CodeWeb.Controllers
 
         public ActionResult DangkyTiem(int idKH)
         {
-            List<HoaDon> carts = Session["ToPay"] as List<HoaDon>;
+            List<GioHang> carts = Session["ToPay"] as List<GioHang>;
             Session["PayList"] = carts;
             Session["Vaccines"] = db.Vaccines.ToList();
             return View();
         }
         [HttpPost]
-        public ActionResult Payment(FormCollection fc)
+        public ActionResult DangkyTiem(FormCollection fc)
         {
+            string addressDetails = fc["address"];
+            string name, phone;
+            name = fc["name"];
+            phone = fc["phone"];
+            if (string.IsNullOrEmpty(addressDetails) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(phone) || !(new Regex(@"^([0-9]{10,11})$").IsMatch(phone)))
+            {
+                ViewData["Error"] = "Lỗi";
+                return View();
+            }
+            List<GioHang> GHs = Session["PayList"] as List<GioHang>;
+            int idBill = 0;
+            int idKH = GHs.FirstOrDefault().MaKH;
+            //foreach (var item in GHs)
+            //{
+            //    if (idBill == 0)
+            //    {
+            //        try
+            //        {
 
+            //            DateTime date = DateTime.Now;
+            //            DONHANG Donhang = new DONHANG();
+            //            Donhang.NGAYMUA = date;
+            //            Donhang.THANHTIEN = 0;
+            //            Donhang.MAKH = idKH;
+            //            Donhang.MALDH = 1;
+            //            Donhang.TRANGTHAI = "Chưa Thanh Toán";
+
+            //            db.DONHANGs.InsertOnSubmit(Donhang);
+            //            db.SubmitChanges();
+            //            idBill = db.DONHANGs.Max(x => x.MADH);
+
+            //            GIAOHANG giaohang = new GIAOHANG();
+            //            giaohang.MADH = idBill;
+            //            giaohang.NGUOINHAN = name;
+            //            giaohang.SDTNGUOINHAN = phone;
+            //            giaohang.DIACHIGIAOHANG = addressDetails;
+            //            giaohang.XACNHANDH = "Chưa Xác Nhận";
+            //            giaohang.TTGIAOHANG = "Chờ Xác Nhận";
+            //            DateTime datetime = DateTime.Now;
+            //            giaohang.THOIGIANDATHANG = datetime;
+            //            db.GIAOHANGs.InsertOnSubmit(giaohang);
+            //            db.SubmitChanges();
+
+            //        }
+            //        catch
+            //        {
+            //            idBill = 0;
+            //        }
+            //    }
+            //    if (idBill > 0)
+            //    {
+            //        try
+            //        {
+            //            CHITIETDH ct = new CHITIETDH();
+            //            ct.MADH = idBill;
+            //            ct.MASACH = item.MASACH;
+            //            ct.SOLUONG = item.SOLUONG;
+            //            db.CHITIETDHs.InsertOnSubmit(ct);
+            //            db.SubmitChanges();
+            //            db.GIOHANGs.DeleteOnSubmit(db.GIOHANGs.SingleOrDefault(x => x.MASACH == item.MASACH && item.MAKH == idKH));
+            //            db.SubmitChanges();
+            //        }
+            //        catch
+            //        {
+            //            idBill = 0;
+            //        }
+            //    }
+            //}
             return RedirectToAction("Index", "Home");
         }
 
-            public ActionResult DanhSachDonHang(int idKH)
+
+        public ActionResult PaymentList(int idKH)
+        {
+            List<GioHang> carts = db.GioHangs.Where(x => x.MaKH == idKH).ToList();
+            int countRemove = carts.RemoveAll(x => x.Vaccine.SoLuongVC < x.SoLuong);
+            if (carts.Count <= 0)
+                return RedirectToAction("Index", "Home");
+            Session["ToPay"] = carts;
+            if (countRemove > 0)
+                Session["Remove"] = countRemove;
+            return RedirectToAction("DangkyTiem", "Cart", new { idKH = idKH });
+        }
+
+        public ActionResult DanhSachDonHang(int idKH)
         {
 
             ViewBag.TB = null;
@@ -175,6 +257,8 @@ namespace CodeWeb.Controllers
             }
             return PartialView(donhangs);
         }
+
+       
 
         public ActionResult ChiTietDonHangDonHang(int idHoaDon, int idKH)
         {
