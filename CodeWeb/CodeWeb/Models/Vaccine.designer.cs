@@ -75,7 +75,7 @@ namespace CodeWeb.Models
     #endregion
 		
 		public VaccineDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLTiemChungVaccineConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLTiemChungVaccineConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -589,7 +589,7 @@ namespace CodeWeb.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVC", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVC", DbType="NVarChar(MAX)")]
 		public string MoTaVC
 		{
 			get
@@ -1159,6 +1159,8 @@ namespace CodeWeb.Models
 		
 		private System.Nullable<int> _TongTien;
 		
+		private string _TrangThaiHD;
+		
 		private EntitySet<ChiTietHoaDon> _ChiTietHoaDons;
 		
 		private EntityRef<NguoiTiemChung> _NguoiTiemChung;
@@ -1179,6 +1181,8 @@ namespace CodeWeb.Models
     partial void OnTongSLChanged();
     partial void OnTongTienChanging(System.Nullable<int> value);
     partial void OnTongTienChanged();
+    partial void OnTrangThaiHDChanging(string value);
+    partial void OnTrangThaiHDChanged();
     #endregion
 		
 		public HoaDon()
@@ -1308,6 +1312,26 @@ namespace CodeWeb.Models
 					this._TongTien = value;
 					this.SendPropertyChanged("TongTien");
 					this.OnTongTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThaiHD", DbType="NVarChar(100)")]
+		public string TrangThaiHD
+		{
+			get
+			{
+				return this._TrangThaiHD;
+			}
+			set
+			{
+				if ((this._TrangThaiHD != value))
+				{
+					this.OnTrangThaiHDChanging(value);
+					this.SendPropertyChanging();
+					this._TrangThaiHD = value;
+					this.SendPropertyChanged("TrangThaiHD");
+					this.OnTrangThaiHDChanged();
 				}
 			}
 		}
@@ -3538,7 +3562,7 @@ namespace CodeWeb.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string MatKhau
 		{
 			get

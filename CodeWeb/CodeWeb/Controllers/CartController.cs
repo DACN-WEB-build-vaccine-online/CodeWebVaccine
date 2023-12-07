@@ -178,6 +178,7 @@ namespace CodeWeb.Controllers
             int idBill = 0;
             int idKH = GHs.FirstOrDefault().MaKH;
 
+
             foreach (var item in GHs)
             {
                 if (idBill == 0)

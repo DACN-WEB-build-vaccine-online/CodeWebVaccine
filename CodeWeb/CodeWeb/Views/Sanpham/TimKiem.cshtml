@@ -56,23 +56,34 @@
     @if (Model != null && Model.Any())
     {
         <div class="row">
-            @foreach (var pv in Model)
+            @foreach (var p in Model)
             {
                 <div class="col-md-4 mb-4">
                     <div class="card phong p-3">
-                        <a href="@Url.Action("Details", "Sanpham", new {  @id = pv.MaVC })">
-                            <img src="~/images/Vaccine/@Html.Raw(pv.HinhAnhVC)" />
-                        </a>
-                        <span style="margin-top:10px;"><b>@pv.TenVC</b></span><br />
-                        <label>Loại Vaccine: @(pv.LoaiVaccine != null ? pv.LoaiVaccine.TenLoai : "Không có")</label><br />
-                        <span class="gia-thue">Số lượng: @pv.SoLuongVC </span><br />
-                        <span>Tình trạng: @pv.TinhTrangVC</span><br />
-                        <span>Giá: @String.Format("{0:0,0 VNĐ}", pv.GiaBanVC)</span><br />
-
+                        <div class="">
+                            <a href="@Url.Action("Details", "Sanpham", new { @id = p.MaVC }, null)">
+                                <img style="max-block-size: 160px; margin-bottom: 10px;" src="~/images/Vaccine/@Html.Raw(p.HinhAnhVC)" alt="...">
+                            </a>
+                        </div>
+                        <div class="product__item__text" style="padding-top: 10px;">
+                            <h6 class="vaccine-name" title="@p.TenVC">@Html.Raw(p.TenVC)</h6>
+                            @if (p.SoLuongVC > 0)
+                            {
+                                <a href="@Url.Action("ThemGioHang", "Cart", new { @ma = p.MaVC, sl = 1, strURL = Request.Url })">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm Vào Giỏ Hàng
+                                </a>
+                            }
+                            else
+                            {
+                                <p class="out-of-stock" style="color: red;">Hết hàng</p>
+                            }
+                            <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBanVC)</h5>
+                        </div>
                     </div>
                 </div>
             }
         </div>
+
     }
     else
     {

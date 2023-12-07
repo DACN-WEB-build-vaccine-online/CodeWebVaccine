@@ -84,7 +84,7 @@
                                         <td class="quantity__item">
                                             <div class="quantity">
                                                 <div class="pro-qty-2">
-                                                    <input type="number" min="1" max="@max" name="amount" class="amount" value="@item.SoLuong" oninvalid="this.setCustomValidity('Tối đa chỉ có thể chọn ' + @max.ToString() +' sản phẩm')" />
+                                                    <input type="number" min="1" max="1" name="amount" class="amount" value="@item.SoLuong" oninvalid="this.setCustomValidity('Tối đa chỉ có thể chọn 1 sản phẩm')" />
                                                 </div>
                                             </div>
                                         </td>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn update__btn">
-                            <a href="@Url.Action("XoaAll", "Cart", new { idkh=lstGioHang.First().MaKH })"><i class="fa fa-close"></i> Xoá Giỏ Hàng</a>
+                            <a href="@Url.Action("XoaAll", "Cart", new { idkh=lstGioHang.First().MaKH })"><i class="fa fa-close"></i> Xoá hết Giỏ Hàng</a>
                         </div>
                     </div>
                 </div>

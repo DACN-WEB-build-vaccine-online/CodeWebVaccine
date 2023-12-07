@@ -168,13 +168,23 @@
                                 </div>
                                 <div class="product__item__text" style="padding-top: 10px;">
                                     <h6 class="vaccine-name" title="@p.TenVC">@Html.Raw(p.TenVC)</h6>
-                                    <a href="@Url.Action("ThemGioHang", "Cart", new { idAo = p.MaVC, strURL = Request.Url.ToString() })" class="add-cart">+ Thêm vào giỏ hàng</a>
+                                    @if (p.SoLuongVC > 0)
+                                    {
+                                        <a href="@Url.Action("ThemGioHang", "Cart", new { @ma = p.MaVC, sl = 1, strURL = Request.Url })">
+                                            <i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm Vào Giỏ Hàng
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <p class="out-of-stock" style="color: red;">Hết hàng</p>
+                                    }
                                     <h5>@String.Format("{0:0,0 VNĐ}", p.GiaBanVC)</h5>
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
+
             </div>
         </div>
     </div>
