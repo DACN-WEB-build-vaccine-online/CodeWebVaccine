@@ -178,8 +178,8 @@ namespace CodeWeb.Controllers
             phone = fc["phone"];
            
             List<GioHang> GHs = Session["PayList"] as List<GioHang>;
-            List<MoiQuanHe> moiQuanHeList = db.MoiQuanHes.ToList();
-            ViewBag.MoiQuanHeList = new SelectList(moiQuanHeList, "MaQH", "TenQH");
+
+            
             int idBill = 0;
             int idKH = GHs.FirstOrDefault().MaKH;
 
@@ -189,7 +189,7 @@ namespace CodeWeb.Controllers
             ntc.SoDienThoaiNTC = phone;
             ntc.DiaChiNTC = addressDetails;
             ntc.MaKH = idKH;
-            ntc.MaQH = Convert.ToInt32(fc["MaMoiQuanHe"]);
+
 
             db.NguoiTiemChungs.InsertOnSubmit(ntc);
             db.SubmitChanges();

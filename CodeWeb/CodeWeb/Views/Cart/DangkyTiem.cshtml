@@ -63,7 +63,7 @@
                     {
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label for="firstName">Họ Và Tên Người Nhận</label>
+                                <label for="firstName">Họ Và Tên khách hàng</label>
                                 <input type="text" class="form-control" name="name" id="firstName" placeholder="" value="@kh.HoTenKH" readonly>
                                 <div class="invalid-feedback">
                                     Tên hợp lệ là bắt buộc.
@@ -82,7 +82,7 @@
 
                         <div class="mb-3">
                             <label for="ngaysinh">Ngày sinh</label>
-                            <input type="text" class="form-control" name="ngaysinh" id="ngaysinh" value="@kh.NgaySinhKH.ToString("dd/MM/yyyy")" placeholder="1234 Số đường,..." readonly>
+                            <input type="text" class="form-control" name="ngaysinh" id="ngaysinh" value="@kh.NgaySinhKH.ToString("yyyy/MM/dd")" placeholder="Ngày sinh" readonly>
                             <div class="invalid-feedback">
                                 Nhập ngày sinh
                             </div>
@@ -91,7 +91,7 @@
 
                         <div class="mb-3">
                             <label for="phone">Số điện thoại </label>
-                            <input type="text" class="form-control" name="phone" id="phone" value="@kh.SoDienThoaiKH" placeholder="1234 Số đường,..." required>
+                            <input type="text" class="form-control" name="phone" id="phone" value="@kh.SoDienThoaiKH" placeholder="Số điện thoại" required>
                             <div class="invalid-feedback">
                                 Nhập số điện thoại
                             </div>
