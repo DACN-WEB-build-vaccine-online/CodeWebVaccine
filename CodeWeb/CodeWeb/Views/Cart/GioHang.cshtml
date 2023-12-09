@@ -169,7 +169,11 @@
         var soLuong = parseInt($(".amount").val()); // Lấy giá trị số lượng từ input
 
         if (soLuong !== 1) {
-            alert("Số lượng sản phẩm trong giỏ hàng phải là 1.");
+            Swal.fire({
+                title: 'Lỗi',
+                text: 'Số lượng sản phẩm trong giỏ hàng phải là 1.',
+                icon: 'error'
+            });
             return false; // Ngăn chặn chuyển hướng
         }
 
