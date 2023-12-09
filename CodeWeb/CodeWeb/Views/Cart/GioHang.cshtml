@@ -120,8 +120,9 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn">
-                            <a href="@Url.Action("PaymentList", "Cart", new { idKH=kh.MaKH })">Thanh Toán</a>
+                            <a href="@Url.Action("PaymentList", "Cart", new { idKH=kh.MaKH })" onclick="return kiemTraSoLuong()">Thanh Toán</a>
                         </div>
+@*  *@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn update__btn">
@@ -163,7 +164,18 @@
         }
     }
 </script>
+<script>
+    function kiemTraSoLuong() {
+        var soLuong = parseInt($(".amount").val()); // Lấy giá trị số lượng từ input
 
+        if (soLuong !== 1) {
+            alert("Số lượng sản phẩm trong giỏ hàng phải là 1.");
+            return false; // Ngăn chặn chuyển hướng
+        }
+
+        return true; // Cho phép chuyển hướng
+    }
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="~/DULIEU/KhachHang/js/cart.js"></script>

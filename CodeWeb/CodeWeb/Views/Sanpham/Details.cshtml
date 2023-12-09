@@ -90,6 +90,7 @@
                     <p><strong>Tên Vaccine:</strong> @Model.TenVC</p>
                     <p><strong>Loại Vaccine:</strong> @(Model.LoaiVaccine != null ? Model.LoaiVaccine.TenLoai : "Không có")</p>
                     <p><strong>Số Lượng:</strong> @Model.SoLuongVC</p>
+                    <p><strong>Xuất xứ:</strong> @Model.NguonGocVC</p>
                     <p><strong>Giá bán:</strong>  @String.Format("{0:0,0 VNĐ}", Model.GiaBanVC)</p>
                     <p><strong>Mô tả:</strong> @Model.MoTaVC</p>
                 </div>
@@ -116,32 +117,32 @@
                             <td>Từ tròn 9 tuổi đến dưới 15 tuổi</td>
                             <td>2 mũi</td>
                             <td>
-                                <ol>
+                                <ul>
                                     <li>Mũi 1: lần tiêm đầu tiên trong độ tuổi</li>
                                     <li>Mũi 2: cách mũi 1 từ 6-12 tháng.</li>
-                                </ol>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>Từ tròn 15 tuổi đến dưới 27 tuổi</td>
                             <td>3 mũi (0-2-6)</td>
                             <td>
-                                <ol>
+                                <ul>
                                     <li>Mũi 1: lần tiêm đầu tiên trong độ tuổi</li>
                                     <li>Mũi 2: cách mũi 1 ít nhất 2 tháng</li>
                                     <li>Mũi 3: cách mũi 2 ít nhất 4 tháng</li>
-                                </ol>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>Từ tròn 27 tuổi trở lên</td>
                             <td>3 mũi (0-2-6)</td>
                             <td>
-                                <ol>
+                                <ul>
                                     <li>Mũi 1: lần tiêm đầu tiên trong độ tuổi</li>
                                     <li>Mũi 2: cách mũi 1 ít nhất 2 tháng</li>
                                     <li>Mũi 3: cách mũi 2 ít nhất 4 tháng</li>
-                                </ol>
+                                </ul>
                             </td>
                         </tr>
                     </tbody>

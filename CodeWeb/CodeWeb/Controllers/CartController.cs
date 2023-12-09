@@ -32,6 +32,7 @@ namespace CodeWeb.Controllers
             {
                 return RedirectToAction("DangNhap", "Auth", new { strURL = strURL });
             }
+
             //lay ra gio hang
             var lstGioHang = db.GioHangs.Where(x => x.MaKH == kh.MaKH).ToList();
             //kiem tra vc nay da co trong session "Gio Hang" hay chua ?
@@ -156,28 +157,42 @@ namespace CodeWeb.Controllers
             List<GioHang> carts = Session["ToPay"] as List<GioHang>;
             Session["PayList"] = carts;
             Session["Vaccines"] = db.Vaccines.ToList();
+            
+
             return View();
         }
         [HttpPost]
-        public ActionResult DangkyTiem(FormCollection fc)
+        public ActionResult DangkyTiem(FormCollection fc, NguoiTiemChung ntc)
         {
+            int tongTien = TongThanhTien();
+            string total = fc["total"];
+            double totalAmount = Convert.ToDouble(total);
             string addressDetails = fc["address"];
             string name, phone;
+            var giotinh = fc["GioiTinhKH"];
+            var ngaysinh = fc["Ngaysinh"];
+
+            var ngaytiem = fc["Ngaytiem"];
 
             name = fc["name"];
             phone = fc["phone"];
-            if (string.IsNullOrEmpty(addressDetails) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(phone) || !(new Regex(@"^([0-9]{10,11})$").IsMatch(phone)))
-            {
-                ViewData["Error"] = "Lỗi";
-                return View();
-            }
+           
             List<GioHang> GHs = Session["PayList"] as List<GioHang>;
-            var mqh = db.MoiQuanHes.ToList();
-
-
+            List<MoiQuanHe> moiQuanHeList = db.MoiQuanHes.ToList();
+            ViewBag.MoiQuanHeList = new SelectList(moiQuanHeList, "MaQH", "TenQH");
             int idBill = 0;
             int idKH = GHs.FirstOrDefault().MaKH;
 
+            ntc.HoTenNTC = name;
+            ntc.GioiTinhNTC = giotinh;
+            ntc.NgaySinhNTC = DateTime.Parse(ngaysinh);
+            ntc.SoDienThoaiNTC = phone;
+            ntc.DiaChiNTC = addressDetails;
+            ntc.MaKH = idKH;
+            ntc.MaQH = Convert.ToInt32(fc["MaMoiQuanHe"]);
+
+            db.NguoiTiemChungs.InsertOnSubmit(ntc);
+            db.SubmitChanges();
 
             foreach (var item in GHs)
             {
@@ -187,39 +202,71 @@ namespace CodeWeb.Controllers
                     {
                         HoaDon Donhang = new HoaDon();
                         Donhang.NgayLap = DateTime.Now;
-                        //Donhang.ThoiGianTiem = date;
-                        Donhang.MaNTC = idKH;
-                        Donhang.TongTien = (int)TongThanhTien();
+                        Donhang.ThoiGianTiem = DateTime.Parse(ngaytiem);                   
+                        Donhang.MaNTC = ntc.MaNTC;
+                        if (totalAmount != 0)
+                        {
+                            Donhang.TongTien = (int)totalAmount;
+                        }
 
+                        Donhang.TrangThaiHD = "Đang xác nhận";
                         db.HoaDons.InsertOnSubmit(Donhang);
                         db.SubmitChanges();
 
+                        idBill = (int)Donhang.MaNTC;
                     }
                     catch
                     {
                         idBill = 0;
                     }
                 }
-                //    if (idBill > 0)
-                //    {
-                //        try
-                //        {
-                //            CHITIETDH ct = new CHITIETDH();
-                //            ct.MADH = idBill;
-                //            ct.MASACH = item.MASACH;
-                //            ct.SOLUONG = item.SOLUONG;
-                //            db.CHITIETDHs.InsertOnSubmit(ct);
-                //            db.SubmitChanges();
-                //            db.GIOHANGs.DeleteOnSubmit(db.GIOHANGs.SingleOrDefault(x => x.MASACH == item.MASACH && item.MAKH == idKH));
-                //            db.SubmitChanges();
-                //        }
-                //        catch
-                //        {
-                //            idBill = 0;
-                //        }
-                //    }
-                
-               
+                if (idBill > 0)
+                {
+                    try
+                    {
+                        GioHang gioHangItem = db.GioHangs.SingleOrDefault(x => x.MaVC == item.MaVC && x.MaKH == idKH);
+
+                        if (gioHangItem != null)
+                        {
+                            ChiTietHoaDon ct = new ChiTietHoaDon();
+                            ct.MaHD = idBill;
+                            ct.MaVC = item.MaVC;
+                            ct.SoLuong = item.SoLuong;
+
+                            // Lấy giá bán từ bảng Vaccine
+                            Vaccine vaccine = db.Vaccines.SingleOrDefault(v => v.MaVC == item.MaVC);
+
+                            if (vaccine != null)
+                            {
+                                // Tính ThanhTien bằng cách nhân giá bán của vaccine với số lượng
+                                ct.ThanhTien = vaccine.GiaBanVC * item.SoLuong;
+
+                                db.ChiTietHoaDons.InsertOnSubmit(ct);
+                                db.SubmitChanges();
+
+                                // Xóa GioHang
+                                db.GioHangs.DeleteOnSubmit(gioHangItem);
+                                db.SubmitChanges();
+                            }
+                            else
+                            {
+                                idBill = 0; // Hoặc thực hiện xử lý khác tùy thuộc vào yêu cầu của bạn
+                            }
+                        }
+                        else
+                        {
+                            idBill = 0;
+                        }
+                    }
+                    catch
+                    {
+                        idBill = 0;
+                    }
+                }
+
+
+
+
             }
             return RedirectToAction("Index", "Home");
         }
@@ -239,32 +286,25 @@ namespace CodeWeb.Controllers
 
         public ActionResult DanhSachDonHang(int idKH)
         {
-
             ViewBag.TB = null;
-            List<HoaDon> donhangs = db.HoaDons.Where(x => x.MaNTC == idKH).ToList();
+
+            List<HoaDon> donhangs =
+                (from ntc in db.NguoiTiemChungs
+                 join hd in db.HoaDons on ntc.MaNTC equals hd.MaNTC
+                 where ntc.MaKH == idKH
+                 orderby ntc.MaNTC
+                 select hd).ToList();
+
             if (donhangs.Count <= 0)
             {
-                ViewBag.TB = "Bạn chưa mua đơn nào !";
+                ViewBag.TB = "Bạn chưa mua đơn nào!";
                 return PartialView();
             }
+
             return PartialView(donhangs);
         }
 
-       
 
-        public ActionResult ChiTietDonHangDonHang(int idHoaDon, int idKH)
-        {
-            HoaDon donhang = db.HoaDons.FirstOrDefault(x => x.MaHD == idHoaDon);
-            if (idKH == donhang.MaNTC)
-            {
-                List<ChiTietHoaDon> ctdh = db.ChiTietHoaDons.Where(x => x.MaHD == idHoaDon).ToList();
-
-                ViewBag.CTDH = ctdh;
-                ViewBag.DonHang = donhang;
-                return PartialView();
-            }
-            return RedirectToAction("PageNotFound", "Error");
-        }
 
     }
 }

@@ -24,10 +24,7 @@ namespace CodeWeb.Controllers
         }
 
         
-        public ActionResult DangKyTiem()
-        {
-            return View();
-        }
+
 
         public ActionResult TrangTinTuc()
         {

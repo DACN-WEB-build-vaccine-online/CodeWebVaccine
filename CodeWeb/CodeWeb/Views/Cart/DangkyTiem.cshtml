@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-6 order-md-1">
                     <h4 class="mb-3">Thông Tin Người tiêm</h4>
-                    @using (Html.BeginForm("DangkyTiem", "Cart"))
+                    @using (Html.BeginForm("DangkyTiem", "Cart", FormMethod.Post))
                     {
                         <div class="row">
                             <div class="col-md-12 mb-3">
@@ -73,16 +73,16 @@
 
 
                         <div class="mb-3">
-                            <label for="phone">Giới tính</label>
-                            <input type="tel" class="form-control" name="phone" id="gender" value="@kh.GioiTinhKH" placeholder="Phone" readonly>
+                            <label for="GioiTinhKH">Giới tính</label>
+                            <input type="tel" class="form-control" name="GioiTinhKH" id="gender" value="@kh.GioiTinhKH" placeholder="Phone" required>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Your username is required.
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="address">Ngày sinh</label>
-                            <input type="text" class="form-control" name="address" id="date" value="@kh.NgaySinhKH.ToString("dd/MM/yyyy")" placeholder="1234 Số đường,..." readonly>
+                            <label for="ngaysinh">Ngày sinh</label>
+                            <input type="text" class="form-control" name="ngaysinh" id="ngaysinh" value="@kh.NgaySinhKH.ToString("dd/MM/yyyy")" placeholder="1234 Số đường,..." readonly>
                             <div class="invalid-feedback">
                                 Nhập ngày sinh
                             </div>
@@ -90,8 +90,8 @@
 
 
                         <div class="mb-3">
-                            <label for="address">Số điện thoại </label>
-                            <input type="text" class="form-control" name="address" id="phone" value="@kh.SoDienThoaiKH" placeholder="1234 Số đường,..." readonly>
+                            <label for="phone">Số điện thoại </label>
+                            <input type="text" class="form-control" name="phone" id="phone" value="@kh.SoDienThoaiKH" placeholder="1234 Số đường,..." required>
                             <div class="invalid-feedback">
                                 Nhập số điện thoại
                             </div>
@@ -107,32 +107,15 @@
 
 
                         <div class="mb-3">
-                            <label for="address">Chọn ngày tiêm</label>
-                            <input type="date" class="form-control" name="address" id="address" placeholder="Chọn ngày tiêm" required>
+                            <label for="Ngaytiem">Chọn ngày tiêm</label>
+                            <input type="date" class="form-control" name="Ngaytiem" id="Ngaytiem" placeholder="Chọn ngày tiêm" required>
                             <div class="invalid-feedback">
-                                Vui lòng nhập địa chỉ của bạn.
-                            </div>
-                        </div>
-                  
-                        <hr class="mb-4">
-                        <h4 class="mb-3">Thanh Toán</h4>
-
-                        <div class="d-block my-3">
-                            <div class="custom-control custom-radio">
-                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                                <label class="custom-control-label" for="credit">Khi nhận hàng</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" disabled>
-                                <label class="custom-control-label" for="paypal">PayPal (Đang Phát Triển)</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input id="bankTransfer" name="paymentMethod" type="radio" class="custom-control-input" disabled>
-                                <label class="custom-control-label" for="bankTransfer">Chuyển khoản ngân hàng (Đang Phát Triển)</label>
+                                Vui lòng chọn ngày tiêm.
                             </div>
                         </div>
 
 
+                        <input type="hidden" name="total" value="@total" />
                         <hr class="mb-4">
                         <button type="submit" class="btn btn-primary">Thanh toán</button>}
                 </div>
