@@ -36,7 +36,7 @@
 </head>
 <body class="bg-light">
     <div class="container">
-        <div style="padding:10px;">       
+        <div style="padding:10px;">
             <div class="row">
                 <div class="col-md-6 order-md-2 mb-4">
                     <div class="products-pay">
@@ -114,6 +114,18 @@
                             </div>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="Ngaytiem">Chọn mối quan hệ</label>
+                            @Html.DropDownList("MaQH", (ViewBag.ListQH as IList<MoiQuanHe>).Select(s => new SelectListItem
+                       {
+                           Text = s.TenQH,
+                           Value = s.MaQH.ToString()
+                       }), new { id = "MaQH", @class = "select2-qltv form-control", name = "f-user" })
+                            <div class="invalid-feedback">
+                                Vui lòng chọn ngày tiêm.
+                            </div>
+                        </div>
+
 
                         <input type="hidden" name="total" value="@total" />
                         <hr class="mb-4">
@@ -132,12 +144,12 @@
     @if (ViewData["Error"] != null)
     {
         <script>
-    Swal.fire({
+            Swal.fire({
                 icon: 'error',
                 html: '<b style="color:red;">Vui lòng không bỏ trống thông tin. Nhập số điện thoại đúng định dạng !!!</b>',
                 timer: 3000
             })</script>
-ViewData["Error"] = null;
+        ViewData["Error"] = null;
     }
 </body>
 </html>

@@ -157,7 +157,8 @@ namespace CodeWeb.Controllers
             List<GioHang> carts = Session["ToPay"] as List<GioHang>;
             Session["PayList"] = carts;
             Session["Vaccines"] = db.Vaccines.ToList();
-            
+
+            ViewBag.ListQH = db.MoiQuanHes.ToList();
 
             return View();
         }
@@ -189,7 +190,7 @@ namespace CodeWeb.Controllers
             ntc.SoDienThoaiNTC = phone;
             ntc.DiaChiNTC = addressDetails;
             ntc.MaKH = idKH;
-
+           
 
             db.NguoiTiemChungs.InsertOnSubmit(ntc);
             db.SubmitChanges();
